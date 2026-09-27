@@ -1,7 +1,0 @@
-fastapi
-uvicorn[standard]
-pydantic
-email-validator
-psycopg2-binary
-PyJWT
-python-dotenv
