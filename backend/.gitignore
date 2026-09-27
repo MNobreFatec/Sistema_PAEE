@@ -1,0 +1,5 @@
+requisitos_e_documentacoes/
+.env
+paee_database.sql
+.venv/
+__pycache__/
