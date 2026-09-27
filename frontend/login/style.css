@@ -1,0 +1,30 @@
+/* ==========================================================
+   Fatec - Indaiatuba | Acesso ao Portal
+   Estilos customizados (fora do Tailwind)
+   ========================================================== */
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.hero-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(178, 0, 0, 0.85) 0%,
+    rgba(30, 36, 43, 0.88) 50%,
+    rgba(15, 20, 26, 0.95) 100%
+  );
+}
+
+.input-border-subtle {
+  border: 1px solid #B20000;
+}
+
+.input-border-subtle:hover {
+  border-color: #8A0000;
+}
+
+.input-focus-ring:focus {
+  border-color: #B20000;
+  box-shadow: 0 0 0 3px rgba(178, 0, 0, 0.15);
+}
