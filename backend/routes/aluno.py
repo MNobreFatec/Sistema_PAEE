@@ -1,6 +1,6 @@
-from backend.database import conectar
-from backend.models import AlunoCreate
-from backend.seguranca import gerar_hash
+from backend.core.database import conectar
+from backend.models.models import AlunoCreate
+from backend.core.seguranca import gerar_hash
 
 def criar_aluno(aluno: AlunoCreate):
     aluno.senha = gerar_hash(aluno.senha)  # Gera o hash da senha antes de cadastrá-la

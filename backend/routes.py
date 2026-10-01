@@ -1,13 +1,13 @@
 from pathlib import Path
 
-from backend.aluno import buscar_aluno_por_email, criar_aluno
+from backend.routes.aluno import buscar_aluno_por_email, criar_aluno
 from fastapi import FastAPI, HTTPException, status, Depends
 from fastapi.security import OAuth2PasswordRequestForm
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
-from backend.autenticacao import criar_access_token
-from backend.seguranca import verificar_senha
-from backend.models import AlunoCreate
+from backend.routes.autenticacao import criar_access_token
+from backend.core.seguranca import verificar_senha
+from backend.models.models import AlunoCreate
 
 app = FastAPI()
 

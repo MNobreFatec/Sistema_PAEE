@@ -3,7 +3,7 @@ from jose import JWTError, jwt  # type: ignore[reportMissingModuleSource]  # imp
 from fastapi.security import OAuth2PasswordBearer #importa a classe que cria o esquema de autenticação OAuth2 com senha e token.
 from fastapi import Depends, HTTPException, status
 
-from backend.aluno import buscar_aluno_por_email
+from backend.routes.aluno import buscar_aluno_por_email
 
 SECRET_KEY = "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6" #chave secreta para assinar o token, deve ser mantida em segredo e não compartilhada publicamente.
 
