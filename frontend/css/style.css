@@ -1,0 +1,140 @@
+/* ==========================================================
+   Fatec - Indaiatuba | Acesso ao Portal
+   Estilos customizados (fora do Tailwind)
+   ========================================================== */
+
+:root{
+    --fatec-vermelho: #731425;
+    --vermelho: #B20000;
+    --vermelho-escuro: #8A0000; /* Para hover */
+    --vermelho-claro: #FFF1F1; /* Fundo sútil */
+    --fatec-cinza: #314040; /* Background de h2*/ 
+    --fatec-azul: #4581B9;
+    --fatec--gelo: #f2f2f2;
+    --cinza-medio: #4A5568; /* Para textos */
+    --borda: #E2E8F0; /*Bordas*/
+}
+
+header {
+        position: fixed;
+        width: 100%;
+        background-color: var(--vermelho);
+        color: var(--fatec--gelo);
+        font-size: 15px;
+        top: 0;
+        left: 0;
+        padding-left: 15px;
+        padding-top: 0px;
+        padding-bottom: 5px;
+}
+
+    nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+nav a{
+    text-decoration: none;
+    color: var(--fatec--gelo);
+}
+
+nav a:not(:last-child)::after {
+    content: "|";
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+nav a:hover{
+    color: rgba(15, 20, 26, 0.95);
+}
+
+h2{
+    font-size: 31px;
+    font-weight: bold;
+
+    background-color: var(--fatec-cinza);
+    color: var(--fatec--gelo);
+    
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    padding-top: 30px;
+    padding-bottom: 7px;
+    padding-left: 15px;    
+
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+body p{
+    padding-left: 20px;
+}
+
+main{
+    flex: 1;
+    font-size: medium;
+    padding-top: 50px;
+}
+
+.hero-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(178, 0, 0, 0.85) 0%,
+    rgba(30, 36, 43, 0.88) 50%,
+    rgba(15, 20, 26, 0.95) 100%
+  );
+}
+
+.input-border-subtle {
+  border: 1px solid var(--vermelho);
+}
+
+.input-border-subtle:hover {
+  border-color: var(--vermelho-escuro);
+}
+
+.input-focus-ring:focus {
+  border-color: var(--vermelho);
+  box-shadow: 0 0 0 3px rgba(178, 0, 0, 0.15);
+}
+
+footer {
+    width: 100%;
+    background-color: var(--vermelho);
+    color: var(--fatec--gelo);
+    padding-top: 7px;
+    padding-bottom: 7px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer a{
+    text-decoration: none;
+    color: var(--fatec--gelo);
+    padding-left: 15px;
+}
+
+footer a:hover{
+    color: rgba(15, 20, 26, 0.95);
+}
+
+footer img{
+    background-color: var(--fatec--gelo);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
+
