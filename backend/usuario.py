@@ -210,8 +210,9 @@ def buscar_usuario_por_email(email: str):
                             "id_usuario": resultado[0],
                             "email": resultado[1],
                             "senha_hash": resultado[2],
-                            "ativo": resultado[3],
-                            "descricao_tipo_usuario": resultado[4]
+                            "nivel_usuario": resultado[3],
+                            "ativo": resultado[4],
+                            "descricao_usuario": resultado[5]
                         }
                     }
                 else:
