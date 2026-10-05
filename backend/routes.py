@@ -1,19 +1,17 @@
 from pathlib import Path
 
-from backend.aluno import buscar_aluno_por_email, criar_aluno
+from backend.usuario import buscar_usuario_por_email, criar_usuario
 from fastapi import FastAPI, HTTPException, status, Depends
 from fastapi.security import OAuth2PasswordRequestForm
-from fastapi.responses import FileResponse
-from fastapi.staticfiles import StaticFiles
 from backend.autenticacao import criar_access_token
 from backend.seguranca import verificar_senha
-from backend.models import AlunoCreate
+from backend.models import UsuarioCreate
 
 app = FastAPI()
 
-@app.post("/aluno")
-def criar_aluno_endpoint(aluno: AlunoCreate):
-    resultado = criar_aluno(aluno)
+@app.post("/usuario")
+def criar_usuario_endpoint(usuario: UsuarioCreate):
+    resultado = criar_usuario(usuario)
     if resultado["success"]:
         return resultado
     else:
@@ -29,16 +27,16 @@ async def login_route(formulario: OAuth2PasswordRequestForm = Depends()):
     email = formulario.username
     senha = formulario.password
 
-    aluno_banco = buscar_aluno_por_email(email)
-    if not aluno_banco["success"]:
+    usuario_banco = buscar_usuario_por_email(email)
+    if not usuario_banco["success"]:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Email ou senha inválidos",
             headers={"WWW-Authenticate": "Bearer"}
         )
 
-    dados_aluno = aluno_banco["aluno"]
-    senha_valida = verificar_senha(senha, dados_aluno["senha_hash"])
+    dados_usuario = usuario_banco["usuario"]
+    senha_valida = verificar_senha(senha, dados_usuario["senha_hash"])
 
     if not senha_valida:
         raise HTTPException(
@@ -47,7 +45,7 @@ async def login_route(formulario: OAuth2PasswordRequestForm = Depends()):
             headers={"WWW-Authenticate": "Bearer"}
         )
 
-    token = criar_access_token({"sub": dados_aluno["email"]})
+    token = criar_access_token({"sub": dados_usuario["email"]})
     return {
         "access_token": token,
         "token_type": "bearer"
