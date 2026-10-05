@@ -27,3 +27,51 @@ Futuramente definiremos.
 ## Como Executar o Projeto
 
 Futuramente definiremos.
+
+## DER do banco de dados
+
+![alt text](image.png)
+
+## Tabelas e campos
+
+**usuario:**
+id_usuario PK
+email
+senha_hash
+id_tipo_usuario FK
+ativo
+
+**tipo_usuario:**
+id_tipo_usuario PK
+descricao
+
+**aluno:**
+matricula PK
+id_usuario FK
+nome
+curso
+periodo
+
+**professor:**
+id_professor PK
+id_usuario FK
+nome
+
+**assistente:**
+id_assistente PK
+id_usuario FK
+cnpj_emp
+nome_emp
+nome_assist
+especialidade
+
+**coordenador:**
+id_coordenador PK
+nome
+id_usuario FK
+curso
+
+**telefone:**
+id_tel PK
+id_usuario FK
+numero_tel
