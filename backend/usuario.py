@@ -206,7 +206,7 @@ def buscar_usuario_por_email(email: str):
                     return {
                         "success": True,
                         "message": "Usuario encontrado com sucesso",
-                        "aluno": {
+                        "usuario": {
                             "id_usuario": resultado[0],
                             "email": resultado[1],
                             "senha_hash": resultado[2],
