@@ -20,6 +20,7 @@ def criar_usuario_endpoint(usuario: UsuarioCreate):
 # Endpoint para login de usuario
 @app.post("/login", status_code=status.HTTP_200_OK, responses={ #Lista de respostas possíveis para o endpoint, com seus respectivos códigos de status e descrições.
         401: {"description": "E-mail ou senha inválidos."},
+        403: {"description": "Usuário inativo."},
         422: {"description": "Dados de login inválidos ou ausentes."},
         500: {"description": "Erro interno inesperado."}
     })
@@ -43,6 +44,12 @@ async def login_route(formulario: OAuth2PasswordRequestForm = Depends()):
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Email ou senha inválidos",
             headers={"WWW-Authenticate": "Bearer"}
+        )
+
+    if not dados_usuario["ativo"]:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Usuário inativo. Entre em contato com o suporte."
         )
 
     token = criar_access_token({"sub": dados_usuario["email"]})

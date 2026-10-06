@@ -49,6 +49,8 @@ def criar_usuario_base(usuario: UsuarioCreate):
 def criar_usuario(usuario: UsuarioCreate):
     if usuario.id_tipo_usuario == 1: #Caso aluno 
         usuario_base = criar_usuario_base(usuario)
+        if not usuario_base["success"]:
+            return usuario_base
         conection = None
         try:
             with conectar() as conection:
@@ -85,6 +87,8 @@ def criar_usuario(usuario: UsuarioCreate):
             }
     elif usuario.id_tipo_usuario == 2: #Caso professor
         usuario_base = criar_usuario_base(usuario)
+        if not usuario_base["success"]:
+            return usuario_base
         conection = None 
         try:
             with conectar() as conection:
@@ -116,6 +120,8 @@ def criar_usuario(usuario: UsuarioCreate):
             }
     elif usuario.id_tipo_usuario == 3: #Caso assistente
         usuario_base = criar_usuario_base(usuario)
+        if not usuario_base["success"]:
+            return usuario_base
         conection = None
         try:
             with conectar() as conection:
@@ -151,6 +157,8 @@ def criar_usuario(usuario: UsuarioCreate):
             }
     elif usuario.id_tipo_usuario == 4: #Caso coordenador
         usuario_base = criar_usuario_base(usuario)
+        if not usuario_base["success"]:
+            return usuario_base
         conection = None
         try:
             with conectar() as conection:
