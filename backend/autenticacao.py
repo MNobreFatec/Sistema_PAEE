@@ -2,13 +2,23 @@ from datetime import datetime, timedelta, timezone #datetime é para colocar uma
 from jose import JWTError, jwt  # type: ignore[reportMissingModuleSource]  # importa a biblioteca que cria e lê tokens e verifica a assinatura
 from fastapi.security import OAuth2PasswordBearer #importa a classe que cria o esquema de autenticação OAuth2 com senha e token.
 from fastapi import Depends, HTTPException, status
+import os 
+from pathlib import Path
+from dotenv import load_dotenv
 
 from backend.usuario import buscar_usuario_por_email
 
-SECRET_KEY = "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6" #chave secreta para assinar o token, deve ser mantida em segredo e não compartilhada publicamente.
+BASE_DIR = Path(__file__).resolve().parent
+
+load_dotenv(BASE_DIR / ".env") #carrega as variáveis de ambiente do arquivo .env
+
+SECRET_KEY = os.getenv("SECRET_KEY") #pega a chave secreta do arquivo .env
+
+if not SECRET_KEY:
+    raise RuntimeError("SECRET_KEY não configurada no arquivo .env")
+
 
 ALGORITHM = "HS256" #algoritmo de assinatura do token, neste caso é o HMAC com SHA-256.
-
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 #tempo de expiração do token em minutos, neste caso é 60 minutos.
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login") #cria o esquema de autenticação OAuth2 com senha e token, onde o token é obtido através do endpoint /login.
