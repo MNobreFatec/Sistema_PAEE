@@ -1,37 +1,69 @@
+# models.py
+from typing import Literal, Union, Annotated
 from pydantic import BaseModel, EmailStr, Field, field_validator
 
-class UsuarioCreate(BaseModel):
-    id_tipo_usuario: int
+
+def texto_obrigatorio(valor: str, nome_campo: str) -> str:
+    if not isinstance(valor, str) or not valor.strip():
+        raise ValueError(f"O campo '{nome_campo}' não pode ser vazio ou conter apenas espaços")
+    return valor.strip()
+
+
+class UsuarioBase(BaseModel):
     email: EmailStr
-    senha: str = Field(..., min_length=8)  # Adicionando validação de tamanho da senha
-    matricula: int
+    senha: str = Field(..., min_length=8)
+
+
+class AlunoCreate(UsuarioBase):
+    id_tipo_usuario: Literal[1] = 1
+    matricula: int = Field(..., gt=0)
     nome: str
     curso: str
-    periodo: int
-    cnpj_emp: int
+    periodo: int = Field(..., gt=0)
+    tel_num: str
+
+    @field_validator("nome", "curso", "tel_num")
+    @classmethod
+    def _valida_textos(cls, v, info):
+        return texto_obrigatorio(v, info.field_name)
+
+
+class ProfessorCreate(UsuarioBase):
+    id_tipo_usuario: Literal[2] = 2
+    nome: str
+
+    @field_validator("nome")
+    @classmethod
+    def _valida_textos(cls, v, info):
+        return texto_obrigatorio(v, info.field_name)
+
+
+class AssistenteCreate(UsuarioBase):
+    id_tipo_usuario: Literal[3] = 3
+    cnpj_emp: int = Field(..., gt=0)
     nome_emp: str
+    nome: str
     especialidade: str
     tel_num: str
 
-    @field_validator("nome", "curso", "nome_emp", "especialidade", "tel_num", mode="before")
+    @field_validator("nome_emp", "nome", "especialidade", "tel_num")
     @classmethod
-    def campos_texto_nao_podem_ser_vazios(cls, valor, info):
-        if not isinstance(valor, str) or not valor.strip():
-            raise ValueError(f"O campo '{info.field_name}' não pode ser vazio ou conter apenas espaços")
-        return valor.strip()
+    def _valida_textos(cls, v, info):
+        return texto_obrigatorio(v, info.field_name)
 
-    @field_validator("matricula", "periodo", "cnpj_emp")
+
+class CoordenadorCreate(UsuarioBase):
+    id_tipo_usuario: Literal[4] = 4
+    nome: str
+    curso: str
+
+    @field_validator("nome", "curso")
     @classmethod
-    def campos_numericos_devem_ser_positivos(cls, valor, info):
-        if valor <= 0:
-            raise ValueError(f"O campo '{info.field_name}' deve ser maior que zero")
-        return valor
+    def _valida_textos(cls, v, info):
+        return texto_obrigatorio(v, info.field_name)
 
-    @field_validator("id_tipo_usuario")
-    @classmethod
-    def tipo_usuario_valido(cls, valor):
-        if valor not in (1, 2, 3, 4):
-            raise ValueError("id_tipo_usuario deve ser 1 (aluno), 2 (professor), 3 (assistente) ou 4 (coordenador)")
-        return valor
-    
 
+UsuarioCreate = Annotated[
+    Union[AlunoCreate, ProfessorCreate, AssistenteCreate, CoordenadorCreate],
+    Field(discriminator="id_tipo_usuario")
+]
