@@ -89,3 +89,35 @@ def verificar_administrador(aluno = Depends(obter_usuario_atual)):
             detail="Você não possui permissão para executar esta operação."
         )
     return aluno
+
+def verificar_coordenador(usuario=Depends(obter_usuario_atual)):
+    if usuario["nivel_usuario"] != 4:
+        raise HTTPException(
+            status_code=403,
+            detail="Acesso permitido apenas para coordenadores"
+        )
+    return usuario
+
+def verificar_professor(usuario=Depends(obter_usuario_atual)):
+    if usuario["nivel_usuario"] != 2:
+        raise HTTPException(
+            status_code=403,
+            detail="Acesso permitido apenas para professores"
+        )
+    return usuario
+
+def verificar_assistente(usuario=Depends(obter_usuario_atual)):
+    if usuario["nivel_usuario"] != 3:
+        raise HTTPException(
+            status_code=403,
+            detail="Acesso permitido apenas para assistentes"
+        )
+    return usuario
+
+def verificar_aluno(usuario=Depends(obter_usuario_atual)):
+    if usuario["nivel_usuario"] != 1:
+        raise HTTPException(
+            status_code=403,
+            detail="Acesso permitido apenas para alunos"
+        )
+    return usuario
