@@ -6,6 +6,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 from backend.autenticacao import criar_access_token
 from backend.seguranca import verificar_senha
 from backend.models import UsuarioCreate
+from backend.autenticacao import verificar_coordenador
 
 app = FastAPI()
 
@@ -24,6 +25,14 @@ def criar_usuario_endpoint(usuario: UsuarioCreate):
         422: {"description": "Dados de login inválidos ou ausentes."},
         500: {"description": "Erro interno inesperado."}
     })
+
+@app.get("/teste-coordenador")
+def teste_coordenador(
+    usuario=Depends(verificar_coordenador)):
+    return {
+        "mensagem": "Você é coordenador"
+    }
+
 async def login_route(formulario: OAuth2PasswordRequestForm = Depends()):
     email = formulario.username
     senha = formulario.password
