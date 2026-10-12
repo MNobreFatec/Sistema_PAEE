@@ -6,7 +6,14 @@ from fastapi.security import OAuth2PasswordRequestForm
 from backend.autenticacao import criar_access_token
 from backend.seguranca import verificar_senha
 from backend.models import UsuarioCreate
-from backend.autenticacao import verificar_coordenador
+from backend.autenticacao import (
+    criar_access_token,
+    verificar_coordenador,
+    verificar_professor,
+    verificar_assistente,
+    verificar_aluno
+)
+
 
 app = FastAPI()
 
@@ -32,6 +39,28 @@ def teste_coordenador(
     return {
         "mensagem": "Você é coordenador"
     }
+
+@app.get("/teste-professor")
+def teste_professor(
+    usuario=Depends(verificar_professor)):
+    return {
+        "mensagem": "Você é professor"
+    }
+
+@app.get("/teste-assistente")
+def teste_assistente(
+    usuario=Depends(verificar_assistente)):
+    return {
+        "mensagem": "Você é assistente"
+    }
+
+@app.get("/teste-aluno")
+def teste_aluno(
+    usuario=Depends(verificar_aluno)):
+    return {
+        "mensagem": "Você é aluno"
+    }
+
 
 async def login_route(formulario: OAuth2PasswordRequestForm = Depends()):
     email = formulario.username
