@@ -6,6 +6,10 @@ from fastapi.security import OAuth2PasswordRequestForm
 from backend.autenticacao import criar_access_token
 from backend.seguranca import verificar_senha
 from backend.models import UsuarioCreate
+from backend.relatorio import criar_relatorio
+from backend.models import RelatorioCreate
+from backend.autenticacao import verificar_assistente
+from backend.autenticacao import obter_usuario_atual
 from backend.autenticacao import (
     criar_access_token,
     verificar_coordenador,
@@ -97,3 +101,8 @@ async def login_route(formulario: OAuth2PasswordRequestForm = Depends()):
     }
 
 
+@app.post("/relatorio")
+def criar_relatorio_endpoint(
+    relatorio: RelatorioCreate,
+    usuario=Depends(verificar_assistente)):
+    return criar_relatorio(relatorio)
