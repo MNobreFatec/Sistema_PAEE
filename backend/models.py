@@ -1,6 +1,7 @@
 # models.py
 from typing import Literal, Union, Annotated
 from pydantic import BaseModel, EmailStr, Field, field_validator
+from datetime import date
 
 
 def texto_obrigatorio(valor: str, nome_campo: str) -> str:
@@ -67,3 +68,13 @@ UsuarioCreate = Annotated[
     Union[AlunoCreate, ProfessorCreate, AssistenteCreate, CoordenadorCreate],
     Field(discriminator="id_tipo_usuario")
 ]
+
+class RelatorioCreate(BaseModel):
+    id_aluno: int = Field(..., gt=0)
+    data_aula: date
+    descricao: str
+
+    @field_validator("descricao")
+    @classmethod
+    def valida_descricao(cls, v, info):
+        return texto_obrigatorio(v, info.field_name)
