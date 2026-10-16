@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="utf-8">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <title>
+   Cria&ccedil;&atilde;o de relat&oacute;rio | PAEE
+  </title>
+  <link href="style.css" rel="stylesheet">
+  <link href="telas.css" rel="stylesheet">
+ </head>
+ <body class="portal">
+  <div class="layout">
+   <aside class="sidebar">
+    <div class="brand">
+     <img alt="Logo Fatec" src="logo_fate.png">
+     <div>
+      <strong>
+       Sistema PAEE
+      </strong>
+      <small>
+       Portal de Atendimento
+      </small>
+     </div>
+    </div>
+    <div class="menu-label">
+     MENU PRINCIPAL
+    </div>
+    <div class="side-links">
+     <a class="" href="tela_inicial.html">
+      <span class="symbol">
+       ⌂
+      </span>
+      In&iacute;cio
+     </a>
+     <a class="" href="feedback.html">
+      <span class="symbol">
+       &star;
+      </span>
+      Feedback
+     </a>
+     <a class="active" href="criar_relatorio.html">
+      <span class="symbol">
+       ▤
+      </span>
+      Criar relat&oacute;rio
+     </a>
+     <a class="" href="lista_chamados.html">
+      <span class="symbol">
+       ☷
+      </span>
+      Chamados
+     </a>
+     <a class="" href="dashboard.html">
+      <span class="symbol">
+       ▥
+      </span>
+      Dashboard
+     </a>
+    </div>
+    <div class="sidebar-footer">
+     Fatec Indaiatuba
+     <br>
+     Ambiente demonstrativo
+    </div>
+   </aside>
+   <div class="content">
+    <div class="top">
+     <div>
+      <h1>
+       Cria&ccedil;&atilde;o de relat&oacute;rio
+      </h1>
+      <p>
+       Organize e registre as informa&ccedil;&otilde;es dos atendimentos.
+      </p>
+     </div>
+     <div class="date" id="date">
+     </div>
+    </div>
+    <section class="panel" style="max-width:1000px">
+     <h3>
+      Novo relat&oacute;rio
+     </h3>
+     <p class="muted">
+      Preencha os dados para preparar seu relat&oacute;rio.
+     </p>
+     <form data-demo="Relat&oacute;rio preparado nesta demonstra&ccedil;&atilde;o.">
+      <div class="form-grid">
+       <div class="field">
+        <label for="titulo">
+         T&iacute;tulo do relat&oacute;rio
+        </label>
+        <input id="titulo" placeholder="Ex.: Relat&oacute;rio mensal de chamados" required>
+       </div>
+       <div class="field">
+        <label for="tipo">
+         Tipo de relat&oacute;rio
+        </label>
+        <select id="tipo" required>
+         <option value>
+          Selecione o tipo
+         </option>
+         <option>
+          Atendimentos
+         </option>
+         <option>
+          Chamados
+         </option>
+         <option>
+          Acompanhamento
+         </option>
+         <option>
+          Geral
+         </option>
+        </select>
+       </div>
+       <div class="field">
+        <label for="inicio">
+         Data inicial
+        </label>
+        <input id="inicio" required type="date">
+       </div>
+       <div class="field">
+        <label for="fim">
+         Data final
+        </label>
+        <input id="fim" required type="date">
+       </div>
+       <div class="field">
+        <label for="responsavel">
+         Respons&aacute;vel
+        </label>
+        <input id="responsavel" placeholder="Nome do respons&aacute;vel" required>
+       </div>
+       <div class="field">
+        <label for="situacao">
+         Situa&ccedil;&atilde;o
+        </label>
+        <select id="situacao">
+         <option>
+          Todas
+         </option>
+         <option>
+          Aberto
+         </option>
+         <option>
+          Em andamento
+         </option>
+         <option>
+          Conclu&iacute;do
+         </option>
+        </select>
+       </div>
+       <div class="field full">
+        <label for="descricao">
+         Descri&ccedil;&atilde;o e observa&ccedil;&otilde;es
+        </label>
+        <textarea id="descricao" placeholder="Descreva os principais acontecimentos..."></textarea>
+       </div>
+      </div>
+      <p class="actions">
+       <button class="btn" type="submit">
+        Gerar pr&eacute;via
+       </button>
+       <button class="btn secondary" type="reset">
+        Limpar campos
+       </button>
+      </p>
+      <div class="message" role="status">
+      </div>
+     </form>
+    </section>
+   </div>
+  </div>
+  <script src="telas.js">
+  </script>
+ </body>
+</html>
+
