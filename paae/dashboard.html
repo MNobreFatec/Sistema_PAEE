@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="utf-8">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <title>
+   Dashboard | PAEE
+  </title>
+  <link href="style.css" rel="stylesheet">
+  <link href="telas.css" rel="stylesheet">
+ </head>
+ <body class="portal">
+  <div class="layout">
+   <aside class="sidebar">
+    <div class="brand">
+     <img alt="Logo Fatec" src="logo_fate.png">
+     <div>
+      <strong>
+       Sistema PAEE
+      </strong>
+      <small>
+       Portal de Atendimento
+      </small>
+     </div>
+    </div>
+    <div class="menu-label">
+     MENU PRINCIPAL
+    </div>
+    <div class="side-links">
+     <a class="" href="tela_inicial.html">
+      <span class="symbol">
+       ⌂
+      </span>
+      In&iacute;cio
+     </a>
+     <a class="" href="feedback.html">
+      <span class="symbol">
+       &star;
+      </span>
+      Feedback
+     </a>
+     <a class="" href="criar_relatorio.html">
+      <span class="symbol">
+       ▤
+      </span>
+      Criar relat&oacute;rio
+     </a>
+     <a class="" href="lista_chamados.html">
+      <span class="symbol">
+       ☷
+      </span>
+      Chamados
+     </a>
+     <a class="active" href="dashboard.html">
+      <span class="symbol">
+       ▥
+      </span>
+      Dashboard
+     </a>
+    </div>
+    <div class="sidebar-footer">
+     Fatec Indaiatuba
+     <br>
+     Ambiente demonstrativo
+    </div>
+   </aside>
+   <div class="content">
+    <div class="top">
+     <div>
+      <h1>
+       Dashboard
+      </h1>
+      <p>
+       Vis&atilde;o geral dos indicadores e desempenho dos atendimentos.
+      </p>
+     </div>
+     <div class="date" id="date">
+     </div>
+    </div>
+    <section class="cards">
+     <div class="metric">
+      <div>
+       <small>
+        Total de chamados
+       </small>
+       <strong>
+        44
+       </strong>
+      </div>
+      <span class="iconbox">
+       ☷
+      </span>
+     </div>
+     <div class="metric">
+      <div>
+       <small>
+        Chamados abertos
+       </small>
+       <strong>
+        12
+       </strong>
+      </div>
+      <span class="iconbox">
+       !
+      </span>
+     </div>
+     <div class="metric">
+      <div>
+       <small>
+        Em andamento
+       </small>
+       <strong>
+        8
+       </strong>
+      </div>
+      <span class="iconbox">
+       ◷
+      </span>
+     </div>
+     <div class="metric">
+      <div>
+       <small>
+        Conclu&iacute;dos
+       </small>
+       <strong>
+        24
+       </strong>
+      </div>
+      <span class="iconbox">
+       &checkmark;
+      </span>
+     </div>
+    </section>
+    <div class="cols">
+     <section class="panel">
+      <h3>
+       Chamados por m&ecirc;s
+      </h3>
+      <p class="muted">
+       Volume de solicita&ccedil;&otilde;es registradas.
+      </p>
+      <div class="chart">
+       <div class="bar-group">
+        <strong>
+         9
+        </strong>
+        <div class="bar" style="height:63px">
+        </div>
+        <span>
+         Mai
+        </span>
+       </div>
+       <div class="bar-group">
+        <strong>
+         15
+        </strong>
+        <div class="bar" style="height:105px">
+        </div>
+        <span>
+         Jun
+        </span>
+       </div>
+       <div class="bar-group">
+        <strong>
+         12
+        </strong>
+        <div class="bar" style="height:84px">
+        </div>
+        <span>
+         Jul
+        </span>
+       </div>
+       <div class="bar-group">
+        <strong>
+         20
+        </strong>
+        <div class="bar" style="height:140px">
+        </div>
+        <span>
+         Ago
+        </span>
+       </div>
+       <div class="bar-group">
+        <strong>
+         17
+        </strong>
+        <div class="bar" style="height:119px">
+        </div>
+        <span>
+         Set
+        </span>
+       </div>
+       <div class="bar-group">
+        <strong>
+         24
+        </strong>
+        <div class="bar" style="height:168px">
+        </div>
+        <span>
+         Out
+        </span>
+       </div>
+      </div>
+     </section>
+     <section class="panel">
+      <h3>
+       Situa&ccedil;&atilde;o dos chamados
+      </h3>
+      <p class="muted">
+       Distribui&ccedil;&atilde;o por status.
+      </p>
+      <div style="font-size:13px">
+       Conclu&iacute;dos &mdash; 24 (55%)
+       <div class="progress">
+        <div style="width:55%">
+        </div>
+       </div>
+       Em andamento &mdash; 8 (18%)
+       <div class="progress">
+        <div style="width:18%">
+        </div>
+       </div>
+       Abertos &mdash; 12 (27%)
+       <div class="progress">
+        <div style="width:27%">
+        </div>
+       </div>
+      </div>
+      <div class="note">
+       Indicadores fict&iacute;cios utilizados para demonstrar a interface.
+      </div>
+     </section>
+    </div>
+    <section class="panel" style="margin-top:24px">
+     <h3>
+      Atalhos de gerenciamento
+     </h3>
+     <p class="muted">
+      Acesse as principais &aacute;reas do portal.
+     </p>
+     <div class="actions">
+      <a class="btn" href="lista_chamados.html">
+       Ver chamados
+      </a>
+      <a class="btn secondary" href="criar_relatorio.html">
+       Criar relat&oacute;rio
+      </a>
+     </div>
+    </section>
+   </div>
+  </div>
+  <script src="telas.js">
+  </script>
+ </body>
+</html>
+
