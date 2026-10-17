@@ -1,54 +1,220 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela Inicial | PED</title>
-
-      <!-- Google Fonts: Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- FontAwesome Icons for modern, lightweight UI cues -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Estilos customizados -->
-  <link rel="stylesheet" href="css/style.css">
-  
-</head>
-<body>
-
-    <header>
-        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">Fatec Indaiatuba | PED</h1>
-        <nav>
-           <a href="tela_inicial.html">Início</a>
-           <a href="minhas_solicitações.html">Minhas Solicitações</a>
-           <a href="feedback.html">Feedback</a>
-           <a href="">Dashboard</a>
-           <a href="">Relatórios</a>
-           <a href="">Meu Perfil</a>
-           <a href="">Configurações</a>
-        </nav>
-    </header>
-
-    <main>
-        <section>
-            <br><br><p>Olá, [inserir função de identificação de usuário]!</p>
-            <p>Essa é a plataforma onde você pode criar e ler relatórios de acompanhamento dos alunos e analisar suas solicitações. </p><br>
-        </section>      
-    </main>
-
-    <footer>
-        <img src="img/logo_fate.png" alt="Logo Fatec Indaiatuba" width="7%"> 
-        <ul>
-            <p>Telefone: (19) 3885-1923</p>
-            <a href="https://api.whatsapp.com/send/?phone=5519992691700&text&type=phone_number&app_absent=0">Whatsapp: (19) 99269-1700</a>            
-        </ul>
-    </footer>    
-
-</body>
-
-
-
+<html lang="pt-BR">
+ <head>
+  <meta charset="utf-8">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <title>
+   Bem-vindo ao Sistema PAEE! | PAEE
+  </title>
+  <link href="style.css" rel="stylesheet">
+  <link href="telas.css" rel="stylesheet">
+ </head>
+ <body class="portal">
+  <div class="layout">
+   <aside class="sidebar">
+    <div class="brand">
+     <img alt="Logo Fatec" src="logo_fate.png">
+     <div>
+      <strong>
+       Sistema PAEE
+      </strong>
+      <small>
+       Portal de Atendimento
+      </small>
+     </div>
+    </div>
+    <div class="menu-label">
+     MENU PRINCIPAL
+    </div>
+    <div class="side-links">
+     <a class="active" href="tela_inicial.html">
+      <span class="symbol">
+       ⌂
+      </span>
+      In&iacute;cio
+     </a>
+     <a class="" href="feedback.html">
+      <span class="symbol">
+       &star;
+      </span>
+      Feedback
+     </a>
+     <a class="" href="criar_relatorio.html">
+      <span class="symbol">
+       ▤
+      </span>
+      Criar relat&oacute;rio
+     </a>
+     <a class="" href="lista_chamados.html">
+      <span class="symbol">
+       ☷
+      </span>
+      Chamados
+     </a>
+     <a class="" href="dashboard.html">
+      <span class="symbol">
+       ▥
+      </span>
+      Dashboard
+     </a>
+    </div>
+    <div class="sidebar-footer">
+     Fatec Indaiatuba
+     <br>
+     Ambiente demonstrativo
+    </div>
+   </aside>
+   <div class="content">
+    <div class="top">
+     <div>
+      <h1>
+       Bem-vindo ao Sistema PAEE!
+      </h1>
+      <p>
+       Acompanhe atendimentos e acesse os recursos do portal.
+      </p>
+     </div>
+     <div class="date" id="date">
+     </div>
+    </div>
+    <section class="cards">
+     <div class="metric">
+      <div>
+       <small>
+        Chamados abertos
+       </small>
+       <strong>
+        12
+       </strong>
+      </div>
+      <span class="iconbox">
+       ☷
+      </span>
+     </div>
+     <div class="metric">
+      <div>
+       <small>
+        Em andamento
+       </small>
+       <strong>
+        8
+       </strong>
+      </div>
+      <span class="iconbox">
+       ◷
+      </span>
+     </div>
+     <div class="metric">
+      <div>
+       <small>
+        Conclu&iacute;dos
+       </small>
+       <strong>
+        24
+       </strong>
+      </div>
+      <span class="iconbox">
+       &checkmark;
+      </span>
+     </div>
+     <div class="metric">
+      <div>
+       <small>
+        Relat&oacute;rios
+       </small>
+       <strong>
+        6
+       </strong>
+      </div>
+      <span class="iconbox">
+       ▤
+      </span>
+     </div>
+    </section>
+    <div class="cols">
+     <section class="panel">
+      <h3>
+       Atividades recentes
+      </h3>
+      <p class="muted">
+       Acompanhe as &uacute;ltimas movimenta&ccedil;&otilde;es do sistema.
+      </p>
+      <div class="item">
+       <span>
+        Chamado #1042 &mdash; Acesso ao portal
+       </span>
+       <span class="status open">
+        Aberto
+       </span>
+      </div>
+      <div class="item">
+       <span>
+        Chamado #1041 &mdash; Atualiza&ccedil;&atilde;o cadastral
+       </span>
+       <span class="status">
+        Em andamento
+       </span>
+      </div>
+      <div class="item">
+       <span>
+        Relat&oacute;rio mensal de atendimentos
+       </span>
+       <span class="status done">
+        Conclu&iacute;do
+       </span>
+      </div>
+     </section>
+     <section class="panel">
+      <h3>
+       Acesso r&aacute;pido
+      </h3>
+      <p class="muted">
+       O que voc&ecirc; deseja fazer?
+      </p>
+      <div class="quick">
+       <a href="lista_chamados.html">
+        <span>
+         ☷
+        </span>
+        Consultar chamados
+        <span>
+         &rarr;
+        </span>
+       </a>
+       <a href="criar_relatorio.html">
+        <span>
+         ▤
+        </span>
+        Criar relat&oacute;rio
+        <span>
+         &rarr;
+        </span>
+       </a>
+       <a href="feedback.html">
+        <span>
+         &star;
+        </span>
+        Enviar feedback
+        <span>
+         &rarr;
+        </span>
+       </a>
+       <a href="dashboard.html">
+        <span>
+         ▥
+        </span>
+        Visualizar indicadores
+        <span>
+         &rarr;
+        </span>
+       </a>
+      </div>
+     </section>
+    </div>
+   </div>
+  </div>
+  <script src="telas.js">
+  </script>
+ </body>
 </html>
+
