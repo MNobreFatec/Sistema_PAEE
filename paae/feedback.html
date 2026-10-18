@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="utf-8">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <title>
+   Feedback | PAEE
+  </title>
+  <link href="style.css" rel="stylesheet">
+  <link href="telas.css" rel="stylesheet">
+ </head>
+ <body class="portal">
+  <div class="layout">
+   <aside class="sidebar">
+    <div class="brand">
+     <img alt="Logo Fatec" src="logo_fate.png">
+     <div>
+      <strong>
+       Sistema PAEE
+      </strong>
+      <small>
+       Portal de Atendimento
+      </small>
+     </div>
+    </div>
+    <div class="menu-label">
+     MENU PRINCIPAL
+    </div>
+    <div class="side-links">
+     <a class="" href="tela_inicial.html">
+      <span class="symbol">
+       ⌂
+      </span>
+      In&iacute;cio
+     </a>
+     <a class="active" href="feedback.html">
+      <span class="symbol">
+       &star;
+      </span>
+      Feedback
+     </a>
+     <a class="" href="criar_relatorio.html">
+      <span class="symbol">
+       ▤
+      </span>
+      Criar relat&oacute;rio
+     </a>
+     <a class="" href="lista_chamados.html">
+      <span class="symbol">
+       ☷
+      </span>
+      Chamados
+     </a>
+     <a class="" href="dashboard.html">
+      <span class="symbol">
+       ▥
+      </span>
+      Dashboard
+     </a>
+    </div>
+    <div class="sidebar-footer">
+     Fatec Indaiatuba
+     <br>
+     Ambiente demonstrativo
+    </div>
+   </aside>
+   <div class="content">
+    <div class="top">
+     <div>
+      <h1>
+       Feedback
+      </h1>
+      <p>
+       Sua opini&atilde;o contribui para melhorar os atendimentos.
+      </p>
+     </div>
+     <div class="date" id="date">
+     </div>
+    </div>
+    <div class="cols">
+     <section class="panel">
+      <h3>
+       Envie sua avalia&ccedil;&atilde;o
+      </h3>
+      <p class="muted">
+       Compartilhe sua experi&ecirc;ncia com o sistema.
+      </p>
+      <form data-demo="Feedback registrado nesta demonstra&ccedil;&atilde;o.">
+       <div class="form-grid">
+        <div class="field">
+         <label for="nome">
+          Nome
+         </label>
+         <input id="nome" name="nome" placeholder="Seu nome" required>
+        </div>
+        <div class="field">
+         <label for="email">
+          E-mail
+         </label>
+         <input id="email" placeholder="seu@email.com" required type="email">
+        </div>
+        <div class="field full">
+         <label for="assunto">
+          Assunto
+         </label>
+         <select id="assunto" required>
+          <option value>
+           Selecione
+          </option>
+          <option>
+           Atendimento
+          </option>
+          <option>
+           Usabilidade do sistema
+          </option>
+          <option>
+           Sugest&atilde;o
+          </option>
+          <option>
+           Outro
+          </option>
+         </select>
+        </div>
+        <div class="field full">
+         <label for="avaliacao">
+          Avalia&ccedil;&atilde;o
+         </label>
+         <select id="avaliacao" required>
+          <option value>
+           Selecione uma nota
+          </option>
+          <option>
+           1 - Muito ruim
+          </option>
+          <option>
+           2 - Ruim
+          </option>
+          <option>
+           3 - Regular
+          </option>
+          <option>
+           4 - Bom
+          </option>
+          <option>
+           5 - Excelente
+          </option>
+         </select>
+        </div>
+        <div class="field full">
+         <label for="comentario">
+          Coment&aacute;rio
+         </label>
+         <textarea id="comentario" placeholder="Conte como foi sua experi&ecirc;ncia..." required></textarea>
+        </div>
+       </div>
+       <p>
+        <button class="btn" type="submit">
+         Enviar feedback
+        </button>
+       </p>
+       <div class="message" role="status">
+       </div>
+      </form>
+     </section>
+     <section class="panel">
+      <h3>
+       Por que avaliar?
+      </h3>
+      <p class="muted">
+       Sua participa&ccedil;&atilde;o ajuda a identificar melhorias.
+      </p>
+      <div class="item">
+       &checkmark; Melhorar a experi&ecirc;ncia de uso
+      </div>
+      <div class="item">
+       &checkmark; Aperfei&ccedil;oar o atendimento
+      </div>
+      <div class="item">
+       &checkmark; Identificar novas necessidades
+      </div>
+      <div class="note" style="margin-top:22px">
+       Este formul&aacute;rio &eacute; um prot&oacute;tipo visual. O envio ao servidor depende de integra&ccedil;&atilde;o com o backend.
+      </div>
+     </section>
+    </div>
+   </div>
+  </div>
+  <script src="telas.js">
+  </script>
+ </body>
+</html>
+
