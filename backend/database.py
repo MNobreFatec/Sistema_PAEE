@@ -5,18 +5,21 @@ import psycopg2
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent
-load_dotenv(BASE_DIR / ".env")
+
+# Mantemos a leitura do .env para as outras variáveis (como a SECRET_KEY)
+env_path = BASE_DIR / ".env"
+if env_path.exists():
+    with open(env_path, encoding="utf-8", errors="ignore") as f:
+        load_dotenv(stream=f, override=True)
 
 
 def conectar():
     """
-    Cria e retorna uma conexão com o banco de dados PostgreSQL
-    utilizando as credenciais definidas no arquivo .env.
+    Cria e retorna uma conexão com o banco de dados PostgreSQL do Supabase.
+    Injeta a URL diretamente por segurança contra erros de encoding do arquivo .env.
     """
-    return psycopg2.connect(
-        database=os.getenv("DB_NAME"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        host=os.getenv("DB_HOST"),
-        port=os.getenv("DB_PORT")
-    )
+    # Colocamos a URL diretamente aqui como uma string pura do Python.
+    # Isso ignora qualquer erro de codificação ou caractere invisível do arquivo .env!
+    database_url = os.getenv("DATABASE_URL")
+        
+    return psycopg2.connect(dsn=database_url)
