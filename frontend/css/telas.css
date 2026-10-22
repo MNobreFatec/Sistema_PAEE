@@ -502,3 +502,18 @@ body.portal .top p,
 body.portal .date {
     color: #ffffff;
 }
+
+
+/* Painéis de detalhes usados nas telas de chamados e relatórios. */
+[hidden] { display: none !important; }
+.detail-list { display: grid; grid-template-columns: minmax(150px, 220px) minmax(0, 1fr); gap: 10px 18px; margin: 8px 0; }
+.detail-list dt { font-weight: 700; color: var(--text, #263445); }
+.detail-list dd { margin: 0; overflow-wrap: anywhere; }
+.detail-description { white-space: normal; line-height: 1.6; }
+@media (max-width: 640px) {
+  .detail-list { grid-template-columns: 1fr; gap: 4px; }
+  .detail-list dd { margin-bottom: 10px; }
+}
+@media print {
+  .sidebar, .top button, .actions, #relatorioForm, #relatoriosResultado, #exportarRelatorios { display: none !important; }
+}

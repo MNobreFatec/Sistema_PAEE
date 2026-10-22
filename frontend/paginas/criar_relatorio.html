@@ -6,14 +6,14 @@
   <title>
    Cria&ccedil;&atilde;o de relat&oacute;rio | PAEE
   </title>
-  <link href="style.css" rel="stylesheet">
-  <link href="telas.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/telas.css" rel="stylesheet">
  </head>
  <body class="portal">
   <div class="layout">
    <aside class="sidebar">
     <div class="brand">
-     <img alt="Logo Fatec" src="logo_fate.png">
+     <img alt="Logo Fatec" src="../img/logo_fate.png">
      <div>
       <strong>
        Sistema PAEE
@@ -57,11 +57,15 @@
       </span>
       Dashboard
      </a>
+     <a href="solicitacao_paee.html"><span class="symbol">＋</span>Solicitação PAEE</a>
+     <a href="historico.html"><span class="symbol">◷</span>Histórico</a>
+     <a href="designacao_assistente.html"><span class="symbol">♙</span>Designações</a>
+     <a href="assinaturas.html"><span class="symbol">✓</span>Assinaturas</a>
     </div>
     <div class="sidebar-footer">
      Fatec Indaiatuba
      <br>
-     Ambiente demonstrativo
+     Ambiente local — armazenamento JSON
     </div>
    </aside>
    <div class="content">
@@ -82,10 +86,14 @@
       Novo relat&oacute;rio
      </h3>
      <p class="muted">
-      Preencha os dados para preparar seu relat&oacute;rio.
+      Preencha os dados obrigatórios e envie para salvar o relatório no sistema. Os registros enviados aparecem na tabela abaixo.
      </p>
-     <form data-demo="Relat&oacute;rio preparado nesta demonstra&ccedil;&atilde;o.">
+     <form id="relatorioForm">
       <div class="form-grid">
+       <div class="field">
+        <label for="matricula">Matrícula do aluno</label>
+        <input id="matricula" name="matricula" type="number" min="1" required>
+       </div>
        <div class="field">
         <label for="titulo">
          T&iacute;tulo do relat&oacute;rio
@@ -160,19 +168,20 @@
       </div>
       <p class="actions">
        <button class="btn" type="submit">
-        Gerar pr&eacute;via
+        Enviar e salvar relatório
        </button>
        <button class="btn secondary" type="reset">
         Limpar campos
        </button>
       </p>
-      <div class="message" role="status">
-      </div>
+      <p class="message" role="status" aria-live="polite"></p>
      </form>
     </section>
+    <section class="panel"><div class="top"><h3>Relatórios salvos</h3><button class="btn secondary" id="exportarRelatorios" type="button">Exportar CSV</button></div><div id="relatoriosResultado" class="table-wrap">Carregando relatórios...</div></section>
+    <section class="panel" id="detalhesRelatorio" hidden aria-live="polite"><div class="top"><h3>Detalhes do relatório</h3><div class="actions"><button class="btn secondary" id="imprimirRelatorio" type="button">Imprimir / salvar PDF</button><button class="btn secondary" id="fecharDetalhesRelatorio" type="button">Fechar detalhes</button></div></div><div id="detalhesRelatorioConteudo"></div></section>
    </div>
   </div>
-  <script src="telas.js">
+  <script src="../js/telas.js">
   </script>
  </body>
 </html>

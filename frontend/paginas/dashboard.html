@@ -6,14 +6,14 @@
   <title>
    Dashboard | PAEE
   </title>
-  <link href="style.css" rel="stylesheet">
-  <link href="telas.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/telas.css" rel="stylesheet">
  </head>
  <body class="portal">
   <div class="layout">
    <aside class="sidebar">
     <div class="brand">
-     <img alt="Logo Fatec" src="logo_fate.png">
+     <img alt="Logo Fatec" src="../img/logo_fate.png">
      <div>
       <strong>
        Sistema PAEE
@@ -61,7 +61,7 @@
     <div class="sidebar-footer">
      Fatec Indaiatuba
      <br>
-     Ambiente demonstrativo
+     Ambiente local — armazenamento JSON
     </div>
    </aside>
    <div class="content">
@@ -84,7 +84,7 @@
         Total de chamados
        </small>
        <strong>
-        44
+        0
        </strong>
       </div>
       <span class="iconbox">
@@ -97,7 +97,7 @@
         Chamados abertos
        </small>
        <strong>
-        12
+        0
        </strong>
       </div>
       <span class="iconbox">
@@ -110,7 +110,7 @@
         Em andamento
        </small>
        <strong>
-        8
+        0
        </strong>
       </div>
       <span class="iconbox">
@@ -123,7 +123,7 @@
         Conclu&iacute;dos
        </small>
        <strong>
-        24
+        0
        </strong>
       </div>
       <span class="iconbox">
@@ -137,70 +137,9 @@
        Chamados por m&ecirc;s
       </h3>
       <p class="muted">
-       Volume de solicita&ccedil;&otilde;es registradas.
+       Volume de solicitações cadastradas no ambiente atual.
       </p>
-      <div class="chart">
-       <div class="bar-group">
-        <strong>
-         9
-        </strong>
-        <div class="bar" style="height:63px">
-        </div>
-        <span>
-         Mai
-        </span>
-       </div>
-       <div class="bar-group">
-        <strong>
-         15
-        </strong>
-        <div class="bar" style="height:105px">
-        </div>
-        <span>
-         Jun
-        </span>
-       </div>
-       <div class="bar-group">
-        <strong>
-         12
-        </strong>
-        <div class="bar" style="height:84px">
-        </div>
-        <span>
-         Jul
-        </span>
-       </div>
-       <div class="bar-group">
-        <strong>
-         20
-        </strong>
-        <div class="bar" style="height:140px">
-        </div>
-        <span>
-         Ago
-        </span>
-       </div>
-       <div class="bar-group">
-        <strong>
-         17
-        </strong>
-        <div class="bar" style="height:119px">
-        </div>
-        <span>
-         Set
-        </span>
-       </div>
-       <div class="bar-group">
-        <strong>
-         24
-        </strong>
-        <div class="bar" style="height:168px">
-        </div>
-        <span>
-         Out
-        </span>
-       </div>
-      </div>
+      <div class="chart" id="chamadosPorMes" aria-live="polite">Carregando solicitações...</div>
      </section>
      <section class="panel">
       <h3>
@@ -209,25 +148,9 @@
       <p class="muted">
        Distribui&ccedil;&atilde;o por status.
       </p>
-      <div style="font-size:13px">
-       Conclu&iacute;dos &mdash; 24 (55%)
-       <div class="progress">
-        <div style="width:55%">
-        </div>
-       </div>
-       Em andamento &mdash; 8 (18%)
-       <div class="progress">
-        <div style="width:18%">
-        </div>
-       </div>
-       Abertos &mdash; 12 (27%)
-       <div class="progress">
-        <div style="width:27%">
-        </div>
-       </div>
-      </div>
+      <div id="statusResumo" style="font-size:13px" aria-live="polite">Carregando solicitações...</div>
       <div class="note">
-       Indicadores fict&iacute;cios utilizados para demonstrar a interface.
+       Carregando dados persistidos pela API.
       </div>
      </section>
     </div>
@@ -249,8 +172,9 @@
     </section>
    </div>
   </div>
-  <script src="telas.js">
+  <script src="../js/telas.js">
+  </script>
+  <script src="../js/dashboard.js">
   </script>
  </body>
 </html>
-

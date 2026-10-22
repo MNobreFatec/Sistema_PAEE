@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="utf-8">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <title>
+   Lista de chamados | PAEE
+  </title>
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/telas.css" rel="stylesheet">
+ </head>
+ <body class="portal">
+  <div class="layout">
+   <aside class="sidebar">
+    <div class="brand">
+     <img alt="Logo Fatec" src="../img/logo_fate.png">
+     <div>
+      <strong>
+       Sistema PAEE
+      </strong>
+      <small>
+       Portal de Atendimento
+      </small>
+     </div>
+    </div>
+    <div class="menu-label">
+     MENU PRINCIPAL
+    </div>
+    <div class="side-links">
+     <a class="" href="tela_inicial.html">
+      <span class="symbol">
+       ⌂
+      </span>
+      In&iacute;cio
+     </a>
+     <a class="" href="feedback.html">
+      <span class="symbol">
+       &star;
+      </span>
+      Feedback
+     </a>
+     <a class="" href="criar_relatorio.html">
+      <span class="symbol">
+       ▤
+      </span>
+      Criar relat&oacute;rio
+     </a>
+     <a class="active" href="lista_chamados.html">
+      <span class="symbol">
+       ☷
+      </span>
+      Chamados
+     </a>
+     <a class="" href="dashboard.html">
+      <span class="symbol">
+       ▥
+      </span>
+      Dashboard
+     </a>
+     <a href="solicitacao_paee.html"><span class="symbol">＋</span>Solicitação PAEE</a>
+     <a href="historico.html"><span class="symbol">◷</span>Histórico</a>
+     <a href="designacao_assistente.html"><span class="symbol">♙</span>Designações</a>
+     <a href="assinaturas.html"><span class="symbol">✓</span>Assinaturas</a>
+    </div>
+    <div class="sidebar-footer">
+     Fatec Indaiatuba
+     <br>
+     Ambiente local — armazenamento JSON
+    </div>
+   </aside>
+   <div class="content">
+    <div class="top">
+     <div>
+      <h1>
+       Lista de chamados
+      </h1>
+      <p>
+       Consulte e acompanhe as solicita&ccedil;&otilde;es registradas.
+      </p>
+      <p><a class="btn" href="solicitacao_paee.html">＋ Abrir novo chamado</a></p>
+     </div>
+     <div class="date" id="date">
+     </div>
+    </div>
+    <section class="panel" style="max-width:1000px">
+     <h3>Abrir chamado</h3>
+     <p class="muted">Preencha os dados abaixo e clique em Enviar chamado. O registro será salvo no sistema e aparecerá na lista.</p>
+     <form id="solicitacaoForm">
+      <div class="form-grid">
+       <div class="field">
+        <label for="matricula">Matrícula do aluno</label>
+        <input id="matricula" name="matricula" type="number" min="1" step="1" required>
+       </div>
+       <div class="field full">
+        <label for="motivo">Descrição do chamado</label>
+        <textarea id="motivo" name="motivo" minlength="5" required placeholder="Descreva a solicitação ou necessidade do aluno..."></textarea>
+       </div>
+      </div>
+      <p class="actions">
+       <button class="btn" type="submit">Enviar chamado</button>
+       <button class="btn secondary" type="reset">Limpar campos</button>
+      </p>
+      <p class="message" role="status" aria-live="polite"></p>
+     </form>
+    </section>
+    <section class="cards">
+     <div class="metric">
+      <div>
+       <small>
+        Total de chamados
+       </small>
+       <strong>0</strong>
+      </div>
+      <span class="iconbox">
+       ☷
+      </span>
+     </div>
+     <div class="metric">
+      <div>
+       <small>
+        Abertos
+       </small>
+       <strong>0</strong>
+      </div>
+      <span class="iconbox">
+       !
+      </span>
+     </div>
+     <div class="metric">
+      <div>
+       <small>
+        Em andamento
+       </small>
+       <strong>0</strong>
+      </div>
+      <span class="iconbox">
+       ◷
+      </span>
+     </div>
+     <div class="metric">
+      <div>
+       <small>
+        Conclu&iacute;dos
+       </small>
+       <strong>0</strong>
+      </div>
+      <span class="iconbox">
+       &checkmark;
+      </span>
+     </div>
+    </section>
+    <section class="panel">
+     <div class="top" style="margin-bottom:18px">
+      <div>
+       <h3>
+        Todos os chamados
+       </h3>
+       <p class="muted">
+        Pesquise por n&uacute;mero, assunto ou setor.
+       </p>
+      </div>
+     </div>
+     <div class="toolbar">
+      <input aria-label="Pesquisar chamados" id="search" placeholder="Pesquisar chamados...">
+      <select aria-label="Filtrar por status" id="filter">
+       <option value>
+        Todos os status
+       </option>
+       <option value="Aberta">Aberta</option>
+       <option value="Em análise">Em análise</option>
+       <option value="Em preenchimento">Em preenchimento</option>
+       <option value="Aguardando assinaturas">Aguardando assinaturas</option>
+       <option value="Aprovada">Aprovada</option>
+       <option value="Concluída">Concluída</option>
+       <option value="Indeferida">Indeferida</option>
+      </select>
+     </div>
+     <div class="table-wrap">
+      <table id="tickets">
+       <thead>
+        <tr>
+         <th>
+          N&uacute;mero
+         </th>
+         <th>
+          Assunto
+         </th>
+         <th>
+          Setor
+         </th>
+         <th>
+          Data
+         </th>
+         <th>
+          Status
+         </th>
+         <th>
+          A&ccedil;&atilde;o
+         </th>
+        </tr>
+       </thead>
+       <tbody id="ticketsBody"><tr><td colspan="6">Carregando solicitações...</td></tr></tbody>
+      </table>
+     </div>
+     <section class="panel" id="detalhesChamado" hidden aria-live="polite" style="margin-top:18px">
+      <div class="top"><h3>Detalhes do chamado</h3><button class="btn secondary" id="fecharDetalhesChamado" type="button">Fechar detalhes</button></div>
+      <div id="detalhesChamadoConteudo"></div>
+     </section>
+     <p class="muted" style="margin-top:17px">
+      Os chamados exibidos são carregados das solicitações cadastradas no sistema.
+     </p>
+     <p class="message" id="statusMessageTickets" role="status" aria-live="polite"></p>
+    </section>
+   </div>
+  </div>
+  <script src="../js/telas.js">
+  </script>
+ </body>
+</html>

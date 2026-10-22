@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="utf-8">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <title>
+   Assinaturas e aprovação | PAEE
+  </title>
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/telas.css" rel="stylesheet">
+ </head>
+ <body class="portal">
+  <div class="layout">
+   <aside class="sidebar">
+    <div class="brand">
+     <img alt="Logo Fatec" src="../img/logo_fate.png">
+     <div>
+      <strong>
+       Sistema PAEE
+      </strong>
+      <small>
+       Portal de Atendimento
+      </small>
+     </div>
+    </div>
+    <div class="menu-label">
+     MENU PRINCIPAL
+    </div>
+    <div class="side-links">
+     <a class="" href="tela_inicial.html">
+      <span class="symbol">
+       ⌂
+      </span>
+      In&iacute;cio
+     </a>
+     <a class="" href="feedback.html">
+      <span class="symbol">
+       &star;
+      </span>
+      Feedback
+     </a>
+     <a class="" href="criar_relatorio.html">
+      <span class="symbol">
+       ▤
+      </span>
+      Criar relat&oacute;rio
+     </a>
+     <a class="active" href="lista_chamados.html">
+      <span class="symbol">
+       ☷
+      </span>
+      Chamados
+     </a>
+     <a class="" href="dashboard.html">
+      <span class="symbol">
+       ▥
+      </span>
+      Dashboard
+     </a>
+     <a href="solicitacao_paee.html"><span class="symbol">＋</span>Solicitação PAEE</a>
+     <a href="historico.html"><span class="symbol">◷</span>Histórico</a>
+     <a href="designacao_assistente.html"><span class="symbol">♙</span>Designações</a>
+     <a href="assinaturas.html"><span class="symbol">✓</span>Assinaturas</a>
+    </div>
+    <div class="sidebar-footer">
+     Fatec Indaiatuba
+     <br>
+     Ambiente local — armazenamento JSON
+    </div>
+   </aside>
+   <div class="content">
+    <div class="top">
+     <div>
+      <h1>
+       Assinaturas e aprovação
+      </h1>
+      <p>
+       Consulte e acompanhe as solicita&ccedil;&otilde;es registradas.
+      </p>
+     </div>
+     <div class="date" id="date">
+     </div>
+    </div>
+    <section class="panel"><h3>Assinar formulário</h3><form id="assinaturaForm"><div class="form-grid">
+    <div class="field"><label for="formulario">ID do formulário</label><input id="formulario" name="id_formulario" type="number" min="1" required></div>
+    <div class="field"><label for="papel">Papel</label><select id="papel" name="papel" required><option value="">Selecione</option><option>ALUNO</option><option>PROFESSOR</option><option>COORDENADOR</option><option>ASSISTENTE</option></select></div>
+    <div class="field full"><button type="submit">Registrar assinatura</button><p class="message" role="status"></p></div></div></form><button id="aprovarFormulario" type="button">Aprovar formulário</button><p class="message" id="aprovacaoMensagem" role="status"></p></section>
+    <section class="panel"><h3>Formulários cadastrados</h3><p class="muted">Selecione o ID de um formulário criado por uma solicitação.</p><div id="formulariosResultado" class="table-wrap">Carregando formulários...</div></section>
+    <section class="panel"><h3>Preencher seção do formulário</h3><form id="secaoForm"><div class="form-grid"><div class="field"><label for="secaoFormularioId">ID do formulário</label><input id="secaoFormularioId" type="number" min="1" required></div><div class="field"><label for="nomeSecao">Nome da seção</label><input id="nomeSecao" required placeholder="objetivo"></div><div class="field full"><label for="conteudoSecao">Conteúdo</label><textarea id="conteudoSecao" required></textarea></div><div class="field full"><button type="submit">Salvar seção</button><p class="message" role="status"></p></div></div></form></section>
+   </div>
+  </div>
+  <script src="../js/telas.js">
+  </script>
+ </body>
+</html>

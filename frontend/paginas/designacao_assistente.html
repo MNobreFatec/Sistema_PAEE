@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="utf-8">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <title>
+   Designação de assistente | PAEE
+  </title>
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/telas.css" rel="stylesheet">
+ </head>
+ <body class="portal">
+  <div class="layout">
+   <aside class="sidebar">
+    <div class="brand">
+     <img alt="Logo Fatec" src="../img/logo_fate.png">
+     <div>
+      <strong>
+       Sistema PAEE
+      </strong>
+      <small>
+       Portal de Atendimento
+      </small>
+     </div>
+    </div>
+    <div class="menu-label">
+     MENU PRINCIPAL
+    </div>
+    <div class="side-links">
+     <a class="" href="tela_inicial.html">
+      <span class="symbol">
+       ⌂
+      </span>
+      In&iacute;cio
+     </a>
+     <a class="" href="feedback.html">
+      <span class="symbol">
+       &star;
+      </span>
+      Feedback
+     </a>
+     <a class="" href="criar_relatorio.html">
+      <span class="symbol">
+       ▤
+      </span>
+      Criar relat&oacute;rio
+     </a>
+     <a class="active" href="lista_chamados.html">
+      <span class="symbol">
+       ☷
+      </span>
+      Chamados
+     </a>
+     <a class="" href="dashboard.html">
+      <span class="symbol">
+       ▥
+      </span>
+      Dashboard
+     </a>
+     <a href="solicitacao_paee.html"><span class="symbol">＋</span>Solicitação PAEE</a>
+     <a href="historico.html"><span class="symbol">◷</span>Histórico</a>
+     <a href="designacao_assistente.html"><span class="symbol">♙</span>Designações</a>
+     <a href="assinaturas.html"><span class="symbol">✓</span>Assinaturas</a>
+    </div>
+    <div class="sidebar-footer">
+     Fatec Indaiatuba
+     <br>
+     Ambiente local — armazenamento JSON
+    </div>
+   </aside>
+   <div class="content">
+    <div class="top">
+     <div>
+      <h1>
+       Designação de assistente
+      </h1>
+      <p>
+       Consulte e acompanhe as solicita&ccedil;&otilde;es registradas.
+      </p>
+     </div>
+     <div class="date" id="date">
+     </div>
+    </div>
+    <section class="panel"><h3>Nova designação</h3><form id="designacaoForm"><div class="form-grid">
+    <div class="field"><label for="matricula">Matrícula</label><input id="matricula" name="matricula" type="number" min="1" required></div>
+    <div class="field"><label for="assistente">ID do assistente</label><input id="assistente" name="id_assistente" type="number" min="1" required></div>
+    <div class="field"><label for="inicio">Data inicial</label><input id="inicio" name="data_inicio" type="date" required></div>
+    <div class="field"><label for="fim">Data final (opcional)</label><input id="fim" name="data_fim" type="date"></div>
+    <div class="field full"><button type="submit">Salvar designação</button><p class="message" role="status"></p></div></div></form><div id="designacoesResultado"></div></section>
+   </div>
+  </div>
+  <script src="../js/telas.js">
+  </script>
+ </body>
+</html>

@@ -6,14 +6,14 @@
   <title>
    Bem-vindo ao Sistema PAEE! | PAEE
   </title>
-  <link href="style.css" rel="stylesheet">
-  <link href="telas.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/telas.css" rel="stylesheet">
  </head>
  <body class="portal">
   <div class="layout">
    <aside class="sidebar">
     <div class="brand">
-     <img alt="Logo Fatec" src="logo_fate.png">
+     <img alt="Logo Fatec" src="../img/logo_fate.png">
      <div>
       <strong>
        Sistema PAEE
@@ -57,11 +57,15 @@
       </span>
       Dashboard
      </a>
+     <a href="solicitacao_paee.html"><span class="symbol">＋</span>Solicitação PAEE</a>
+     <a href="historico.html"><span class="symbol">◷</span>Histórico</a>
+     <a href="designacao_assistente.html"><span class="symbol">♙</span>Designações</a>
+     <a href="assinaturas.html"><span class="symbol">✓</span>Assinaturas</a>
     </div>
     <div class="sidebar-footer">
      Fatec Indaiatuba
      <br>
-     Ambiente demonstrativo
+     Ambiente local — armazenamento JSON
     </div>
    </aside>
    <div class="content">
@@ -81,10 +85,10 @@
      <div class="metric">
       <div>
        <small>
-        Chamados abertos
+        Total de solicitações
        </small>
        <strong>
-        12
+        0
        </strong>
       </div>
       <span class="iconbox">
@@ -94,10 +98,10 @@
      <div class="metric">
       <div>
        <small>
-        Em andamento
+        Abertos
        </small>
        <strong>
-        8
+        0
        </strong>
       </div>
       <span class="iconbox">
@@ -107,10 +111,10 @@
      <div class="metric">
       <div>
        <small>
-        Conclu&iacute;dos
+        Em andamento
        </small>
        <strong>
-        24
+        0
        </strong>
       </div>
       <span class="iconbox">
@@ -120,10 +124,10 @@
      <div class="metric">
       <div>
        <small>
-        Relat&oacute;rios
+        Conclu&iacute;dos
        </small>
        <strong>
-        6
+        0
        </strong>
       </div>
       <span class="iconbox">
@@ -139,29 +143,8 @@
       <p class="muted">
        Acompanhe as &uacute;ltimas movimenta&ccedil;&otilde;es do sistema.
       </p>
-      <div class="item">
-       <span>
-        Chamado #1042 &mdash; Acesso ao portal
-       </span>
-       <span class="status open">
-        Aberto
-       </span>
-      </div>
-      <div class="item">
-       <span>
-        Chamado #1041 &mdash; Atualiza&ccedil;&atilde;o cadastral
-       </span>
-       <span class="status">
-        Em andamento
-       </span>
-      </div>
-      <div class="item">
-       <span>
-        Relat&oacute;rio mensal de atendimentos
-       </span>
-       <span class="status done">
-        Conclu&iacute;do
-       </span>
+      <div id="atividadesRecentes" aria-live="polite">
+       <p class="muted">Carregando solicitações...</p>
       </div>
      </section>
      <section class="panel">
@@ -213,8 +196,9 @@
     </div>
    </div>
   </div>
-  <script src="telas.js">
+  <script src="../js/telas.js">
+  </script>
+  <script src="../js/dashboard.js">
   </script>
  </body>
 </html>
-
