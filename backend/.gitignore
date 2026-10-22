@@ -3,3 +3,4 @@ requisitos_e_documentacoes/
 paee_database.sql
 .venv/
 __pycache__/
+.vscode/
