@@ -16,9 +16,17 @@ O sistema substitui o modelo tradicional e manual baseado em formulários de pap
 
 ## Arquitetura e Estrutura do Repositório
 
-Futuramente definiremos.
+- `backend/`: API FastAPI, validações do fluxo e armazenamento JSON local.
+- `frontend/`: páginas HTML, estilos e scripts que consomem a API.
+- `database/`: SQL de referência para a estrutura relacional e a migration complementar.
+- `testar_funcoes.py`: verificações de estrutura, imports e regras de domínio.
+- `testar_integracao_json.py`: testes HTTP integrados usando arquivo JSON temporário.
+
+O caminho executável atual é a API FastAPI em `backend/routes.py`, que também serve os arquivos de `frontend/`. A configuração documentada para demonstração usa JSON local; a migration PostgreSQL ainda não está conectada às rotas do fluxo PAEE.
 
 ## Requisitos e Regras Principais
+
+Os itens abaixo são objetivos funcionais do produto. O modo JSON implementado nesta versão não oferece todas as garantias de autorização e rastreabilidade descritas.
 
 * **Fluxo Sem Papel (Zero Híbrido)**: A ferramenta foi concebida para substituir definitivamente o uso de fichas impressas, eliminando a sobrecarga de redigitação e o consumo de insumos materiais.
 * **Segurança e Rastreabilidade**: Controle estrito de acesso baseado em papéis (RBAC) e registro de auditoria (timestamp) para aprovações e assinaturas digitais.
@@ -26,7 +34,9 @@ Futuramente definiremos.
 
 ## Como Executar o Projeto
 
-Futuramente definiremos.
+Consulte [README_EXECUCAO.md](README_EXECUCAO.md) para instalação, inicialização, login local e execução dos testes.
+
+> **Limitação importante:** o armazenamento JSON e o token de login local são apenas para desenvolvimento/demonstração. A API não aplica autorização por perfil nem deve ser exposta à internet ou usada com dados pessoais reais. Consulte as limitações e os passos exatos no guia de execução antes de usar.
 
 ## DER do banco de dados
 
