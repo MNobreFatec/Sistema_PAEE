@@ -25,7 +25,10 @@ body.portal {
     flex-direction:column;
     position:sticky;
     top:0;
-    height:100vh
+    height:100vh;
+    height:100dvh;
+    overflow-y:auto;
+    overscroll-behavior:contain
 }
 
 .brand {
@@ -246,12 +249,13 @@ body.portal {
 
 .form-grid {
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:repeat(2,minmax(0,1fr));
     gap:18px
 }
 
 .field {
     display:grid;
+    min-width:0;
     gap:8px
 }
 
@@ -266,10 +270,12 @@ body.portal {
 
 .field input,.field select,.field textarea,.toolbar input,.toolbar select {
     width:100%;
+    min-width:0;
     padding:12px 13px;
     border:1px solid #cbd3db;
     border-radius:9px;
-    font:13px Inter,Arial;
+    font:inherit;
+    font-size:13px;
     background:#fff;
     color:#18212c
 }
@@ -279,9 +285,30 @@ body.portal {
     resize:vertical
 }
 
-.field input:focus,.field select:focus,.field textarea:focus,.toolbar input:focus {
+.field input:focus,.field select:focus,.field textarea:focus,.toolbar input:focus,.toolbar select:focus {
     outline:2px solid #b2000030;
     border-color:var(--vermelho)
+}
+
+.panel form button,.panel > button {
+    background:var(--vermelho);
+    border:1px solid var(--vermelho);
+    color:#fff;
+    padding:12px 18px;
+    border-radius:9px;
+    font:600 13px Inter,Arial,sans-serif;
+    cursor:pointer;
+    transition:background-color .15s ease,border-color .15s ease
+}
+
+.panel form button:hover,.panel > button:hover {
+    background:var(--vermelho-escuro);
+    border-color:var(--vermelho-escuro)
+}
+
+.panel form button:focus-visible,.panel > button:focus-visible {
+    outline:3px solid #b2000040;
+    outline-offset:2px
 }
 
 .toolbar {
@@ -457,7 +484,8 @@ td,th {
 
     .side-links {
         display:flex;
-        overflow:auto;
+        overflow-x:auto;
+        overflow-y:hidden;
         padding:8px
     }
 
