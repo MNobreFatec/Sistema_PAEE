@@ -70,13 +70,16 @@ UsuarioCreate = Annotated[
 ]
 
 class RelatorioCreate(BaseModel):
-    id_aluno: int = Field(..., gt=0)
-    unidade: str
-    data_relatorio: date
-    descricao: str
-    observacao: str
+    matricula: str = Field(..., min_length=13, max_length=13)
+    semana_inicio: date
 
-    @field_validator("descricao", "observacao")
-    @classmethod
-    def valida_textos(cls, v, info):
-        return texto_obrigatorio(v, info.field_name)
+    segunda: str = ""
+    terca: str = ""
+    quarta: str = ""
+    quinta: str = ""
+    sexta: str = ""
+
+    observacoes: str = ""
+
+ 
+   
