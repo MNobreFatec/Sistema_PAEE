@@ -71,6 +71,7 @@ UsuarioCreate = Annotated[
 
 class RelatorioCreate(BaseModel):
     id_aluno: int = Field(..., gt=0)
+    unidade: str
     data_relatorio: date
     descricao: str
     observacao: str
