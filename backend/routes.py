@@ -20,7 +20,7 @@ from backend.autenticacao import (
 
 app = FastAPI()
 
-@app.post("/usuario")
+@app.post("/criar_usuario")
 def criar_usuario_endpoint(usuario: UsuarioCreate):
     resultado = criar_usuario(usuario)
     if resultado["success"]:
@@ -35,36 +35,6 @@ def criar_usuario_endpoint(usuario: UsuarioCreate):
         422: {"description": "Dados de login inválidos ou ausentes."},
         500: {"description": "Erro interno inesperado."}
     })
-
-@app.get("/teste-coordenador")
-def teste_coordenador(
-    usuario=Depends(verificar_coordenador)):
-    return {
-        "mensagem": "Você é coordenador"
-    }
-
-@app.get("/teste-professor")
-def teste_professor(
-    usuario=Depends(verificar_professor)):
-    return {
-        "mensagem": "Você é professor"
-    }
-
-@app.get("/teste-assistente")
-def teste_assistente(
-    usuario=Depends(verificar_assistente)):
-    return {
-        "mensagem": "Você é assistente"
-    }
-
-@app.get("/teste-aluno")
-def teste_aluno(
-    usuario=Depends(verificar_aluno)):
-    return {
-        "mensagem": "Você é aluno"
-    }
-
-
 async def login_route(formulario: OAuth2PasswordRequestForm = Depends()):
     email = formulario.username
     senha = formulario.password
@@ -97,6 +67,34 @@ async def login_route(formulario: OAuth2PasswordRequestForm = Depends()):
     return {
         "access_token": token,
         "token_type": "bearer"
+    }
+
+@app.get("/teste-coordenador")
+def teste_coordenador(
+    usuario=Depends(verificar_coordenador)):
+    return {
+        "mensagem": "Você é coordenador"
+    }
+
+@app.get("/teste-professor")
+def teste_professor(
+    usuario=Depends(verificar_professor)):
+    return {
+        "mensagem": "Você é professor"
+    }
+
+@app.get("/teste-assistente")
+def teste_assistente(
+    usuario=Depends(verificar_assistente)):
+    return {
+        "mensagem": "Você é assistente"
+    }
+
+@app.get("/teste-aluno")
+def teste_aluno(
+    usuario=Depends(verificar_aluno)):
+    return {
+        "mensagem": "Você é aluno"
     }
 
 

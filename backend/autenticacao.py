@@ -63,32 +63,32 @@ async def obter_usuario_atual(token: str = Depends(oauth2_scheme)):
             print("ERRO: O campo 'sub' não existe no token.")
             raise credenciais_invalidas
 
-        aluno = buscar_usuario_por_email(email)
+        usuario = buscar_usuario_por_email(email)
 
-        print("Resultado da busca do aluno:", aluno)
+        print("Resultado da busca do usuario:", usuario)
 
-        if not aluno["success"]:
-            print("ERRO: Aluno não encontrado ou consulta retornou erro.")
+        if not usuario["success"]:
+            print("ERRO: Usuario não encontrado ou consulta retornou erro.")
             raise credenciais_invalidas
 
-        print("Aluno autenticado com sucesso.")
-        print("Dados do aluno:", aluno["aluno"])
+        print("Usuario autenticado com sucesso.")
+        print("Dados do usuario:", usuario["usuario"])
         print("--- FIM DA AUTENTICAÇÃO ---\n")
 
-        return aluno["aluno"]
+        return usuario["usuario"]
 
     except JWTError as error:
         print("ERRO JWT:", error)
         print("--- FIM DA AUTENTICAÇÃO ---\n")
         raise credenciais_invalidas
 
-def verificar_administrador(aluno = Depends(obter_usuario_atual)):
-    if aluno["nivel"] != "ADMIN":
+def verificar_administrador(usuario = Depends(obter_usuario_atual)):
+    if usuario["nivel"] != "ADMIN":
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Você não possui permissão para executar esta operação."
         )
-    return aluno
+    return usuario
 
 def verificar_coordenador(usuario=Depends(obter_usuario_atual)):
     if usuario["nivel_usuario"] != 4:

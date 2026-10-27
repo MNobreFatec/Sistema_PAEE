@@ -226,14 +226,14 @@ def buscar_usuario_por_email(email: str):
                 else:
                     return {
                         "success": False,
-                        "message": f"Aluno com email {email} não encontrado"
+                        "message": f"Usuario com email {email} não encontrado"
                     }
     except Exception as error:
         if conexao is not None:
             conexao.rollback()
             return {
                 "success": False,
-                "message": f"Erro ao buscar aluno: {error}",
+                "message": f"Erro ao buscar usuario: {error}",
                 "type": type(error).__name__
             }
         return {
