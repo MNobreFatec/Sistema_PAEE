@@ -21,14 +21,47 @@ def buscar_id_assistente(id_usuario: int):
             if(resultado):
                 return resultado[0]
 
-            return None
+            return {"success": False, "message": "Assistente não encontrado"}
 
     except Exception as error:
-        print(error)
-        return None
+        return {"success": False,
+                "type": type(error).__name__,
+                "message": f"Erro ao buscar assistente: {error}"}
 
 def buscar_dados_aluno(matricula: str):
-    pass      
+    conexao = None
+
+    try:
+        with conectar() as conexao:
+            with conexao.cursor() as cursor:
+                cursor.execute(
+                    """
+                    SELECT id_aluno, nome, curso, periodo
+                    FROM aluno
+                    WHERE matricula = %s
+                    """,
+                    (matricula,)
+                )
+
+            resultado = cursor.fetchone()
+
+            if(resultado):
+                return {
+                    "success": True,
+                    "aluno": {
+                        "id_aluno": resultado[0],
+                        "nome": resultado[1],
+                        "curso": resultado[2],
+                        "periodo": resultado[3]
+                    }
+                }
+
+            return {"success": False, "message": "Aluno não encontrado"}
+
+    except Exception as error:
+        return {"success": False,
+                "type": type(error).__name__,
+                "message": f"Erro ao buscar aluno: {error}"}      
 
 def criar_relatorio(
         relatorio: RelatorioCreate,
@@ -41,7 +74,7 @@ def criar_relatorio(
 
     if id_assistente is None:
         return{
-            "sucess": False,
+            "success": False,
             "message": "Assistente não encontrado"
         }
 
