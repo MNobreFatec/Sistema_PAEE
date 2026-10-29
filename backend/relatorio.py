@@ -71,12 +71,19 @@ def criar_relatorio(
     id_assistente = buscar_id_assistente(
         usuario['id_usuario']
     )
+    
+    dados_aluno = buscar_dados_aluno(
+        relatorio.matricula
+    )
 
     if id_assistente is None:
         return{
             "success": False,
             "message": "Assistente não encontrado"
         }
+        
+    if not dados_aluno['success']:
+        return dados_aluno
 
     try:
         with conectar() as conexao:
