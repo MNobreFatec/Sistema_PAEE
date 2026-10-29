@@ -84,12 +84,46 @@ def criar_relatorio(
         
     if not dados_aluno['success']:
         return dados_aluno
+    
+    curso = dados_aluno['aluno']['curso']
+    periodo = dados_aluno['aluno']['periodo']
 
     try:
         with conectar() as conexao:
             with conexao.cursor() as cursor:
-                #INSERT SERA COLOCADO AQUI FUTURAMENTE
-                pass
+               cursor.execute(
+                """
+                    INSERT INTO relatorio (
+                    matricula,
+                    id_assistente,
+                    aluno_curso,
+                    aluno_periodo,
+                    semana_inicio,
+                    segunda,
+                    terca,
+                    quarta,
+                    quinta,
+                    sexta,
+                    observacoes
+                )
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                """,
+                (
+                    (
+                    relatorio.matricula,
+                    id_assistente,
+                    curso,
+                    periodo,
+                    relatorio.semana_inicio,
+                    relatorio.segunda,
+                    relatorio.terca,
+                    relatorio.quarta,
+                    relatorio.quinta,
+                    relatorio.sexta,
+                    relatorio.observacoes
+            )
+                )
+)
 
             conexao.commit()
 
