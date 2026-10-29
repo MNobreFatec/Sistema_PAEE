@@ -36,12 +36,15 @@ except ModuleNotFoundError:
 
 class TestFuncoesPAEE(unittest.TestCase):
     def test_imports_backend(self):
-        import backend.routes, backend.usuario, backend.relatorio, backend.paee_service
+        import backend.routes, backend.relatorio, backend.paee_service
+        import backend.api.router, backend.repositories.postgres
         self.assertTrue(backend.routes.app)
 
     def test_endpoint_health_registrado(self):
         from backend.routes import app
-        paths = {r.path for r in app.routes}
+        paths = {
+            route.path for route in app.routes if hasattr(route, 'path')
+        } | set(app.openapi()['paths'])
         self.assertIn('/', paths)
         self.assertIn('/favicon.ico', paths)
         self.assertIn('/health', paths)
@@ -50,6 +53,8 @@ class TestFuncoesPAEE(unittest.TestCase):
         self.assertIn('/api/professores', paths)
         self.assertIn('/api/designacoes', paths)
         self.assertIn('/api/formularios/{id_formulario}/assinar', paths)
+        self.assertIn('/api/v1/auth/login', paths)
+        self.assertIn('/api/v1/usuarios/me', paths)
 
     def test_transicao_status_permitida(self):
         from backend.paee_service import validar_transicao_status
