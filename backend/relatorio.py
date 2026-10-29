@@ -1,5 +1,5 @@
 from backend.database import conectar
-from backend.models import RelatorioCreate
+from backend.schemas.api import RelatorioCreate
 
 def criar_relatorio(relatorio: RelatorioCreate):
     try:

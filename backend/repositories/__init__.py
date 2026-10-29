@@ -1,0 +1,1 @@
+"""Acesso a dados persistidos."""

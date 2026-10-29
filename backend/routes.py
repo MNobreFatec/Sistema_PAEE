@@ -9,9 +9,11 @@ from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from backend import armazenamento_json as db
 from backend.paee_service import validar_transicao_status, validar_designacao, validar_assinatura, validar_secao
-from backend.seguranca import gerar_hash, verificar_senha
+from backend.core.security import gerar_hash, verificar_senha
+from backend.api.router import api_router
 
 app = FastAPI(title='Sistema PAEE', version='1.1.0-json-local', description='Modo local com persistência JSON para testes')
+app.include_router(api_router, prefix='/api/v1')
 now = lambda: datetime.now().isoformat(timespec='seconds')
 
 def required(payload, *fields):
