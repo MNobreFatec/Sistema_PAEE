@@ -13,7 +13,7 @@
   <div class="layout">
    <aside class="sidebar">
     <div class="brand">
-     <img alt="Logo Fatec" src="../img/logo_fate.png">
+     <span class="brand-mark" aria-hidden="true">PAEE</span>
      <div>
       <strong>
        Sistema PAEE
@@ -88,11 +88,13 @@
      <p class="muted">
       Preencha os dados obrigatórios e envie para salvar o relatório no sistema. Os registros enviados aparecem na tabela abaixo.
      </p>
-     <form id="relatorioForm">
+     <form id="relatorioForm" data-role-only="ASSISTENTE">
       <div class="form-grid">
        <div class="field">
         <label for="matricula">Matrícula do aluno</label>
-        <input id="matricula" name="matricula" type="number" min="1" required>
+        <select id="matricula" name="matricula" required>
+         <option value="">Carregando alunos designados...</option>
+        </select>
        </div>
        <div class="field">
         <label for="titulo">
@@ -122,6 +124,19 @@
          </option>
         </select>
        </div>
+       <div class="field">
+        <label for="materia">Matéria</label>
+        <input id="materia" name="materia" maxlength="120" required placeholder="Ex.: Matemática">
+       </div>
+       <div class="field">
+        <label for="dataRelatorio">Data do relatório</label>
+        <input id="dataRelatorio" name="data_relatorio" required type="date">
+       </div>
+       <div class="field">
+        <label for="categoriaDeficienciaRelatorio">Categoria de deficiência</label>
+        <input id="categoriaDeficienciaRelatorio" type="text" value="Selecione um aluno" readonly aria-live="polite">
+       </div>
+       <div class="field full"><div id="camposEspecificos" class="form-grid" aria-live="polite"></div></div>
        <div class="field">
         <label for="inicio">
          Data inicial
@@ -185,4 +200,3 @@
   </script>
  </body>
 </html>
-

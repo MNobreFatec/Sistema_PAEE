@@ -1,0 +1,6 @@
+Em outra máquina, instale as dependências e copie `backend/.env.example` para `backend/.env`. Preencha `SECRET_KEY` com uma chave aleatória própria; não precisa ser a mesma usada em outra máquina e não deve ser compartilhada.
+
+Na raiz do projeto, execute:
+
+python -m pip install -r requirements.txt
+python -m uvicorn backend.routes:app --reload

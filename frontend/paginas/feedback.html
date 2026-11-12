@@ -13,7 +13,7 @@
   <div class="layout">
    <aside class="sidebar">
     <div class="brand">
-     <img alt="Logo Fatec" src="../img/logo_fate.png">
+     <span class="brand-mark" aria-hidden="true">PAEE</span>
      <div>
       <strong>
        Sistema PAEE
@@ -74,15 +74,14 @@
       <h1>
        Feedback
       </h1>
-      <p>
-       Sua opini&atilde;o contribui para melhorar os atendimentos.
-      </p>
+     <p data-role-hide="COORDENADOR">Sua opini&atilde;o contribui para melhorar os atendimentos.</p>
+     <p data-role-only="COORDENADOR">Consulte os feedbacks enviados pelos usu&aacute;rios.</p>
      </div>
      <div class="date" id="date">
      </div>
     </div>
     <div class="cols">
-     <section class="panel">
+     <section class="panel" data-role-only="ALUNO,ASSISTENTE,PROFESSOR">
       <h3>
        Envie sua avalia&ccedil;&atilde;o
       </h3>
@@ -166,7 +165,12 @@
        </div>
       </form>
      </section>
-     <section class="panel">
+     <section class="panel" data-role-only="COORDENADOR">
+      <h3>Feedbacks recebidos</h3>
+      <p class="muted">Consulte as avaliações enviadas pelos usuários.</p>
+      <div id="feedbacksResultado" aria-live="polite">Carregando feedbacks...</div>
+     </section>
+     <section class="panel" data-role-hide="COORDENADOR">
       <h3>
        Por que avaliar?
       </h3>
@@ -193,4 +197,3 @@
   </script>
  </body>
 </html>
-

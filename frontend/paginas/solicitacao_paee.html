@@ -13,7 +13,7 @@
   <div class="layout">
    <aside class="sidebar">
     <div class="brand">
-     <img alt="Logo Fatec" src="../img/logo_fate.png">
+     <span class="brand-mark" aria-hidden="true">PAEE</span>
      <div>
       <strong>
        Sistema PAEE
@@ -84,7 +84,7 @@
     <section class="panel" style="max-width:1000px">
       <h3>Nova solicitação</h3><p class="muted">Preencha os dados para iniciar o fluxo PAEE.</p>
       <form id="solicitacaoForm"><div class="form-grid">
-       <div class="field"><label for="matricula">Matrícula do aluno</label><input id="matricula" name="matricula" type="number" min="1" required></div>
+       <div class="field"><label for="matricula">Matrícula do aluno</label><input id="matricula" name="matricula" type="text" readonly aria-describedby="matriculaAjuda"><small id="matriculaAjuda">Preenchida pelo perfil autenticado.</small></div>
        <div class="field full"><label for="motivo">Motivo da solicitação</label><textarea id="motivo" name="motivo" required></textarea></div>
        <div class="field full"><button type="submit">Enviar solicitação</button><p class="message" role="status"></p></div>
       </div></form>

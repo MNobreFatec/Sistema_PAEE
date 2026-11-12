@@ -1,19 +1,10 @@
-"""Executa testes automatizados do PAEE sem conectar ao banco real."""
+"""Testes de regras e estrutura dos fluxos locais do PAEE."""
 import sys
 import unittest
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
-
-# Permite testar imports e regras sem instalar/abrir um banco PostgreSQL.
-try:
-    import psycopg2  # noqa: F401
-except ModuleNotFoundError:
-    import types
-    fake_db = types.ModuleType('psycopg2')
-    fake_db.connect = lambda **kwargs: (_ for _ in ()).throw(RuntimeError('Banco não utilizado no teste offline'))
-    sys.modules['psycopg2'] = fake_db
 
 try:
     import bcrypt  # noqa: F401
@@ -36,8 +27,7 @@ except ModuleNotFoundError:
 
 class TestFuncoesPAEE(unittest.TestCase):
     def test_imports_backend(self):
-        import backend.routes, backend.relatorio, backend.paee_service
-        import backend.api.router, backend.repositories.postgres
+        import backend.routes, backend.paee_service
         self.assertTrue(backend.routes.app)
 
     def test_endpoint_health_registrado(self):
@@ -53,8 +43,8 @@ class TestFuncoesPAEE(unittest.TestCase):
         self.assertIn('/api/professores', paths)
         self.assertIn('/api/designacoes', paths)
         self.assertIn('/api/formularios/{id_formulario}/assinar', paths)
-        self.assertIn('/api/v1/auth/login', paths)
-        self.assertIn('/api/v1/usuarios/me', paths)
+        self.assertIn('/api/alunos/{matricula}/estatisticas', paths)
+        self.assertIn('/api/relatorios/estatisticas', paths)
 
     def test_transicao_status_permitida(self):
         from backend.paee_service import validar_transicao_status
@@ -98,7 +88,7 @@ class TestFuncoesPAEE(unittest.TestCase):
         self.assertTrue(validar_secao('objetivo', {'texto': 'Plano de apoio'}))
 
     def test_paginas_originais_e_novas(self):
-        nomes = ['tela_inicial.html', 'dashboard.html', 'lista_chamados.html', 'criar_relatorio.html', 'feedback.html', 'solicitacao_paee.html', 'historico.html', 'designacao_assistente.html', 'assinaturas.html']
+        nomes = ['tela_inicial.html', 'dashboard.html', 'estatisticas_aluno.html', 'lista_chamados.html', 'criar_relatorio.html', 'feedback.html', 'solicitacao_paee.html', 'historico.html', 'designacao_assistente.html', 'assinaturas.html', 'usuarios.html']
         for name in nomes:
             self.assertTrue((ROOT / 'frontend' / 'paginas' / name).is_file(), name)
 
@@ -112,13 +102,6 @@ class TestFuncoesPAEE(unittest.TestCase):
                     continue
                 if path.endswith(('.css', '.js', '.png', '.jpg', '.svg')):
                     self.assertTrue((html.parent / path).exists(), f'{html.name}: {path}')
-
-    def test_migration_nao_apaga_tabelas(self):
-        sql = (ROOT / 'database/migrations/001_fluxo_paee.sql').read_text(encoding='utf-8').upper()
-        self.assertIn('CREATE TABLE IF NOT EXISTS SOLICITACAO_PAEE', sql)
-        self.assertNotIn('DROP TABLE', sql)
-        formulario = sql.split('CREATE TABLE IF NOT EXISTS FORMULARIO_PAEE', 1)[1].split('CREATE TABLE IF NOT EXISTS', 1)[0]
-        self.assertIn("'EM_PREENCHIMENTO'", formulario)
 
     def test_pagina_inicial_encaminha_para_login(self):
         index = (ROOT / 'frontend/index.html').read_text(encoding='utf-8')
@@ -139,7 +122,8 @@ class TestFuncoesPAEE(unittest.TestCase):
         self.assertIn('id="chamadosPorMes"', page)
         self.assertIn('id="statusResumo"', page)
         self.assertIn('<script src="../js/dashboard.js">', page)
-        self.assertIn("fetch(`${window.PAEE_API_URL || window.location.origin}/api/solicitacoes`)", script)
+        self.assertIn("fetch(`${window.PAEE_API_URL || ''}/api/solicitacoes`", script)
+        self.assertIn("Authorization: `Bearer ${sessionStorage.getItem('paee_token') || ''}`", script)
         self.assertIn('dashboardChart.innerHTML', script)
         self.assertIn('statusSummary.innerHTML', script)
         self.assertIn('window.carregarResumoVisual = carregarResumoVisual', script)
@@ -151,13 +135,16 @@ class TestFuncoesPAEE(unittest.TestCase):
 
     def test_logout_limpa_sessao_da_interface(self):
         source = (ROOT / 'frontend/js/telas.js').read_text(encoding='utf-8')
+        login = (ROOT / 'frontend/paginas/login/script.js').read_text(encoding='utf-8')
         self.assertIn("sessionStorage.removeItem('paee_token')", source)
         self.assertIn("sessionStorage.removeItem('paee_usuario')", source)
+        self.assertNotIn("sessionStorage.setItem('paee_usuario'", source + login)
+        self.assertNotIn("localStorage.setItem('paee_email'", login)
 
     def test_formularios_api_impedem_envio_duplicado(self):
         source = (ROOT / 'frontend/js/telas.js').read_text(encoding='utf-8')
-        self.assertIn("form.dataset.enviando==='true'", source)
-        self.assertEqual(source.count('void executarEnvioUnico('), 6)
+        self.assertIn("form.dataset.enviando === 'true'", source)
+        self.assertIn('async function once(form, action)', source)
 
     def test_dashboard_nao_exibe_dados_ficticios(self):
         for page in ('tela_inicial.html', 'dashboard.html'):
@@ -165,26 +152,23 @@ class TestFuncoesPAEE(unittest.TestCase):
             self.assertNotIn('Chamado #1042', content)
             self.assertNotIn('44', content)
 
-    def test_fluxos_relatorio_e_formulario_atualizam_interface(self):
+    def test_fluxos_expoem_autoria_assinatura_e_anexos(self):
         source = (ROOT / 'frontend/js/telas.js').read_text(encoding='utf-8')
-        self.assertNotIn('Designa??o registrada.', source)
-        self.assertNotIn('Se??o salva.', source)
-        self.assertNotIn('Formul?rio aprovado.', source)
-        approval = source[source.index("document.getElementById('aprovarFormulario')"):source.index('// Histórico do aluno.')]
-        self.assertIn('await carregarFormularios()', approval)
-        printing = source[source.index("const imprimirRelatorio="):source.index("document.getElementById('exportarRelatorios')")]
-        self.assertLess(printing.index("window.open('','_blank')"), printing.index('await obterRelatorios()'))
-        self.assertIn('O navegador bloqueou a janela de impress\\u00e3o.', printing)
-        self.assertIn('</script></body></html>', printing)
+        page = (ROOT / 'frontend/paginas/assinaturas.html').read_text(encoding='utf-8')
+        self.assertIn("api(`/api/formularios/${id}/assinar`, { method: 'POST' })", source)
+        self.assertIn("api(`/api/formularios/${id}/anexo`", source)
+        self.assertIn('id_assistente_autor', (ROOT / 'backend/routes.py').read_text(encoding='utf-8'))
+        self.assertIn('application/pdf', (ROOT / 'backend/routes.py').read_text(encoding='utf-8'))
+        self.assertIn('arquivoPdf', page)
+        self.assertIn('data-role-only="ASSISTENTE"', page)
 
-    def test_status_mostrados_com_rotulos_legiveis(self):
+    def test_status_e_perfis_sao_renderizados_com_rotulos_legiveis(self):
         source = (ROOT / 'frontend/js/telas.js').read_text(encoding='utf-8')
         dashboard = (ROOT / 'frontend/js/dashboard.js').read_text(encoding='utf-8')
-        history = source[source.index("// Histórico do aluno."):source.index("// Chamados:")]
-        self.assertIn('escapeHtml(statusLabel(r.status))', history)
-        self.assertIn("RASCUNHO:'Rascunho'", source)
-        self.assertIn("APROVADO:'Aprovado'", source)
-        self.assertIn('escapeHtml(statusLabel(f.status))', source)
+        self.assertIn("APROVADO: 'Aprovado'", source)
+        self.assertIn("setupRoleUI(user)", source)
+        self.assertIn("routeRoles[page]", source)
+        self.assertIn("data-status", source)
         self.assertIn("CONCLUIDA: 'Concluída'", dashboard)
         self.assertIn('dashboardEscape(dashboardStatus(row.status))', dashboard)
         self.assertIn('Não foi possível conectar ao servidor.', dashboard)

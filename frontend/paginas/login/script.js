@@ -1,11 +1,5 @@
 const API_URL = window.PAEE_API_URL || window.location.origin;
 
-const savedEmail = localStorage.getItem('paee_email');
-if (savedEmail) {
-  document.getElementById('identifier').value = savedEmail;
-  document.getElementById('rememberMe').checked = true;
-}
-
 function togglePasswordVisibility() {
   const password = document.getElementById('password');
   const icon = document.getElementById('passwordEyeIcon');
@@ -83,12 +77,9 @@ async function handleLogin(event) {
     }
 
     sessionStorage.setItem('paee_token', data.access_token);
-    sessionStorage.setItem('paee_usuario', JSON.stringify(data.usuario || {}));
-    if (document.getElementById('rememberMe').checked) {
-      localStorage.setItem('paee_email', email);
-    } else {
-      localStorage.removeItem('paee_email');
-    }
+    sessionStorage.removeItem('paee_usuario');
+    // Não persistir identificador nem senha no navegador.
+    localStorage.removeItem('paee_email');
     window.location.assign(new URL('../tela_inicial.html', window.location.href));
   } catch (error) {
     showLoginMessage(error.message || 'Não foi possível entrar.', true);

@@ -9,7 +9,17 @@ from datetime import datetime, date
 
 DATA_FILE = Path(os.getenv('PAEE_JSON_FILE', Path(__file__).resolve().parent / 'data' / 'paee.json'))
 _LOCK = threading.RLock()
-COLLECTIONS = ('usuarios','solicitacoes','formularios','designacoes','relatorios','feedbacks','assinaturas')
+COLLECTIONS = (
+    'usuarios',
+    'solicitacoes',
+    'formularios',
+    'designacoes',
+    'relatorios',
+    'feedbacks',
+    'assinaturas',
+    'auditoria',
+    'anexos',
+)
 
 def _empty():
     return {**{name: [] for name in COLLECTIONS}, 'counters': {name: 0 for name in COLLECTIONS}}

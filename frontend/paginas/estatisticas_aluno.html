@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Estatísticas do aluno | PAEE</title>
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/telas.css" rel="stylesheet">
+</head>
+<body class="portal">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand"><div><strong>Sistema PAEE</strong><small>Portal de Atendimento</small></div></div>
+      <div class="menu-label">MENU PRINCIPAL</div>
+      <div class="side-links">
+        <a href="tela_inicial.html">Início</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="estatisticas_aluno.html" aria-current="page">Estatísticas dos alunos</a>
+        <a href="lista_chamados.html">Chamados</a>
+        <a href="historico.html">Histórico</a>
+      </div>
+      <div class="sidebar-footer">Área exclusiva para coordenadores.</div>
+    </aside>
+    <main class="content">
+      <div class="top">
+        <div><h1>Estatísticas do aluno</h1><p>Consulte as avaliações mensais e segmente por matéria.</p></div>
+        <div class="date" id="date"></div>
+      </div>
+      <section class="panel">
+        <h2>Pesquisar aluno</h2>
+        <form id="estatisticasBusca">
+          <div class="form-grid">
+            <div class="field"><label for="buscarAluno">Nome ou matrícula</label><input id="buscarAluno" type="search" placeholder="Digite para filtrar alunos"></div>
+            <div class="field"><label for="alunoSelecionado">Aluno</label><select id="alunoSelecionado" required><option value="">Carregando alunos...</option></select></div>
+            <div class="field"><label for="materiaEstatisticas">Matéria</label><select id="materiaEstatisticas"><option value="">Todas as matérias</option></select></div>
+            <div class="field"><button class="btn" type="submit">Abrir estatísticas</button></div>
+          </div>
+        </form>
+        <p id="estatisticasMensagem" class="message" role="status" aria-live="polite"></p>
+      </section>
+      <section class="panel">
+        <h2 id="alunoEstatisticasTitulo">Avaliações mensais</h2>
+        <p class="muted">Média geral mensal das notas de 1 a 5 e médias por aspecto.</p>
+        <div id="estatisticasMensais" class="chart" aria-live="polite">Selecione um aluno para consultar.</div>
+      </section>
+    </main>
+  </div>
+  <script src="../js/telas.js"></script>
+</body>
+</html>

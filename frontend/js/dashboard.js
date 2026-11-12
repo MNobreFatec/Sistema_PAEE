@@ -32,9 +32,18 @@ function dashboardStatus(value) {
 
 async function carregarResumoVisual() {
   if (!dashboardChart && !recentActivities && !statusSummary && !dashboardMetrics.length) return;
+  if (
+    dashboardMetrics.length &&
+    [...dashboardMetrics].every(metric => metric.closest('[hidden]')) &&
+    (!recentActivities || recentActivities.closest('[hidden]'))
+  ) return;
 
   try {
-    const response = await fetch(`${window.PAEE_API_URL || window.location.origin}/api/solicitacoes`);
+    const response = await fetch(`${window.PAEE_API_URL || ''}/api/solicitacoes`, {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem('paee_token') || ''}`,
+      },
+    });
     const result = await response.json().catch(() => null);
     if (!response.ok) {
       throw new Error(result?.detail || `Erro HTTP ${response.status}`);
@@ -109,4 +118,48 @@ async function carregarResumoVisual() {
 }
 
 window.carregarResumoVisual = carregarResumoVisual;
-carregarResumoVisual();
+document.addEventListener('paee:session-ready', carregarResumoVisual, { once: true });
+
+const searchStudentForm = document.getElementById('pesquisaAlunoDashboard');
+const searchStudentInput = document.getElementById('buscaAlunoDashboard');
+const searchStudentMessage = document.getElementById('pesquisaAlunoMensagem');
+
+async function dashboardApi(path) {
+  const response = await fetch(`${window.PAEE_API_URL || ''}${path}`, {
+    headers: { Authorization: `Bearer ${sessionStorage.getItem('paee_token') || ''}` },
+  });
+  const result = await response.json().catch(() => null);
+  if (!response.ok) throw new Error(result?.detail || `Erro HTTP ${response.status}`);
+  return result;
+}
+
+async function setupStudentDashboardSearch() {
+  if (!searchStudentForm || !searchStudentInput) return;
+  let students = [];
+  try {
+    students = await dashboardApi('/api/alunos');
+  } catch (error) {
+    if (searchStudentMessage) searchStudentMessage.textContent = error.message;
+    return;
+  }
+  searchStudentForm.addEventListener('submit', event => {
+    event.preventDefault();
+    const query = searchStudentInput.value.trim().toLocaleLowerCase('pt-BR');
+    const matches = students.filter(student =>
+      `${student.nome || ''} ${student.matricula || ''}`.toLocaleLowerCase('pt-BR').includes(query)
+    );
+    if (matches.length !== 1) {
+      if (searchStudentMessage) {
+        searchStudentMessage.textContent = matches.length
+          ? 'Há mais de um aluno correspondente. Refine a pesquisa pelo nome ou matrícula.'
+          : 'Nenhum aluno encontrado.';
+      }
+      return;
+    }
+    window.location.assign(`estatisticas_aluno.html?matricula=${encodeURIComponent(matches[0].matricula)}`);
+  });
+}
+
+document.addEventListener('paee:session-ready', () => {
+  void setupStudentDashboardSearch();
+}, { once: true });

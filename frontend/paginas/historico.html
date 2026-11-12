@@ -13,7 +13,7 @@
   <div class="layout">
    <aside class="sidebar">
     <div class="brand">
-     <img alt="Logo Fatec" src="../img/logo_fate.png">
+     <span class="brand-mark" aria-hidden="true">PAEE</span>
      <div>
       <strong>
        Sistema PAEE
@@ -81,7 +81,7 @@
      <div class="date" id="date">
      </div>
     </div>
-    <section class="panel"><h3>Histórico do aluno</h3><div class="form-grid"><div class="field"><label for="matriculaHistorico">Matrícula</label><input id="matriculaHistorico" type="number" min="1"></div><div class="field"><button id="buscarHistorico" type="button">Consultar</button></div></div><div id="historicoResultado" class="table-wrap"></div></section>
+    <section class="panel"><h3>Histórico</h3><div class="form-grid"><div class="field"><label for="matriculaHistorico">Matrícula</label><input id="matriculaHistorico" type="text"></div><div class="field" data-role-only="COORDENADOR"><button id="buscarHistorico" type="button">Consultar matrícula</button></div></div><div id="historicoResultado" class="table-wrap"></div></section>
    </div>
   </div>
   <script src="../js/telas.js">

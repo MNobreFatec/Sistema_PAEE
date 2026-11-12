@@ -13,7 +13,7 @@
   <div class="layout">
    <aside class="sidebar">
     <div class="brand">
-     <img alt="Logo Fatec" src="../img/logo_fate.png">
+     <span class="brand-mark" aria-hidden="true">PAEE</span>
      <div>
       <strong>
        Sistema PAEE
@@ -77,12 +77,12 @@
       <p>
        Consulte e acompanhe as solicita&ccedil;&otilde;es registradas.
       </p>
-      <p><a class="btn" href="solicitacao_paee.html">＋ Abrir novo chamado</a></p>
+      <p data-role-only="ALUNO"><a class="btn" href="solicitacao_paee.html">＋ Abrir novo chamado</a></p>
      </div>
      <div class="date" id="date">
      </div>
     </div>
-    <section class="panel" style="max-width:1000px">
+    <section class="panel" style="max-width:1000px" data-role-only="ALUNO">
      <h3>Abrir chamado</h3>
      <p class="muted">Preencha os dados abaixo e clique em Enviar chamado. O registro será salvo no sistema e aparecerá na lista.</p>
      <form id="solicitacaoForm">

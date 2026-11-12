@@ -13,7 +13,7 @@
   <div class="layout">
    <aside class="sidebar">
     <div class="brand">
-     <img alt="Logo Fatec" src="../img/logo_fate.png">
+     <span class="brand-mark" aria-hidden="true">PAEE</span>
      <div>
       <strong>
        Sistema PAEE
@@ -81,12 +81,12 @@
      <div class="date" id="date">
      </div>
     </div>
-    <section class="panel"><h3>Assinar formulário</h3><form id="assinaturaForm"><div class="form-grid">
+    <section class="panel"><h3>Assinatura digital do perfil autenticado</h3><p class="muted">A coordenação assina primeiro. Depois, somente o assistente autor com designação vigente pode assinar.</p><form id="assinaturaForm"><div class="form-grid">
     <div class="field"><label for="formulario">ID do formulário</label><input id="formulario" name="id_formulario" type="number" min="1" required></div>
-    <div class="field"><label for="papel">Papel</label><select id="papel" name="papel" required><option value="">Selecione</option><option>ALUNO</option><option>PROFESSOR</option><option>COORDENADOR</option><option>ASSISTENTE</option></select></div>
-    <div class="field full"><button type="submit">Registrar assinatura</button><p class="message" role="status"></p></div></div></form><button id="aprovarFormulario" type="button">Aprovar formulário</button><p class="message" id="aprovacaoMensagem" role="status"></p></section>
+    <div class="field full"><button type="submit">Assinar como perfil autenticado</button><p class="message" role="status"></p></div></div></form><button id="aprovarFormulario" type="button" data-role-only="COORDENADOR">Finalizar após as duas assinaturas</button><button id="baixarAnexo" type="button">Baixar PDF do formulário selecionado</button><p class="message" id="aprovacaoMensagem" role="status"></p></section>
     <section class="panel"><h3>Formulários cadastrados</h3><p class="muted">Selecione o ID de um formulário criado por uma solicitação.</p><div id="formulariosResultado" class="table-wrap">Carregando formulários...</div></section>
-    <section class="panel"><h3>Preencher seção do formulário</h3><form id="secaoForm"><div class="form-grid"><div class="field"><label for="secaoFormularioId">ID do formulário</label><input id="secaoFormularioId" type="number" min="1" required></div><div class="field"><label for="nomeSecao">Nome da seção</label><input id="nomeSecao" required placeholder="objetivo"></div><div class="field full"><label for="conteudoSecao">Conteúdo</label><textarea id="conteudoSecao" required></textarea></div><div class="field full"><button type="submit">Salvar seção</button><p class="message" role="status"></p></div></div></form></section>
+    <section class="panel" data-role-only="ASSISTENTE"><h3>Preencher seção do formulário atribuído</h3><form id="secaoForm"><div class="form-grid"><div class="field"><label for="secaoFormularioId">ID do formulário</label><input id="secaoFormularioId" type="number" min="1" required></div><div class="field"><label for="nomeSecao">Nome da seção</label><input id="nomeSecao" required placeholder="apoios"></div><div class="field full"><label for="conteudoSecao">Conteúdo do atendimento</label><textarea id="conteudoSecao" required></textarea></div><div class="field full"><button type="submit">Salvar seção</button><p class="message" role="status"></p></div></div></form></section>
+    <section class="panel"><h3>Anexo PDF privado</h3><p class="muted">PDF até 10 MB. Enviar novamente substitui o arquivo anterior. Acesso somente pela API autenticada.</p><form id="anexoForm"><div class="form-grid"><div class="field"><label for="anexoFormularioId">ID do formulário</label><input id="anexoFormularioId" type="number" min="1" required></div><div class="field"><label for="arquivoPdf">Arquivo PDF</label><input id="arquivoPdf" type="file" accept="application/pdf,.pdf" required></div><div class="field full"><button type="submit">Enviar/substituir PDF</button><p class="message" role="status"></p></div></div></form></section>
    </div>
   </div>
   <script src="../js/telas.js">

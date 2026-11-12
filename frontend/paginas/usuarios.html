@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Usuários e auditoria | PAEE</title>
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/telas.css" rel="stylesheet">
+</head>
+<body class="portal">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand"><div><strong>Sistema PAEE</strong><small>Portal de Atendimento</small></div></div>
+      <div class="menu-label">MENU PRINCIPAL</div>
+      <div class="side-links">
+        <a href="tela_inicial.html">Início</a>
+        <a href="lista_chamados.html">Chamados</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="historico.html">Histórico</a>
+        <a href="criar_relatorio.html">Relatórios</a>
+        <a href="assinaturas.html">Assinaturas</a>
+        <a href="designacao_assistente.html">Designações</a>
+        <a href="usuarios.html" aria-current="page">Usuários e auditoria</a>
+        <a href="feedback.html">Feedback</a>
+      </div>
+      <div class="sidebar-footer">Acesso exclusivo ao diretor (perfil COORDENADOR)</div>
+    </aside>
+    <main class="content">
+      <div class="top"><div><h1>Usuários e auditoria</h1><p>Gerencie perfis, matrículas e deficiências dos alunos. Acesso do diretor (perfil COORDENADOR).</p></div><div class="date" id="date"></div></div>
+      <section class="panel">
+        <h2>Criar usuário</h2>
+        <form id="usuarioForm">
+          <div class="form-grid">
+            <div class="field"><label for="novoNome">Nome</label><input id="novoNome" name="nome" required></div>
+            <div class="field"><label for="novoEmail">E-mail</label><input id="novoEmail" name="email" type="email" required></div>
+            <div class="field"><label for="novoPapel">Perfil</label><select id="novoPapel" name="nivel_usuario" required><option value="">Selecione</option><option>ALUNO</option><option>ASSISTENTE</option><option>PROFESSOR</option><option>COORDENADOR</option></select></div>
+            <div class="field"><label for="novaSenha">Senha inicial (12+ caracteres)</label><input id="novaSenha" name="senha" type="password" minlength="12" autocomplete="new-password" required></div>
+            <div class="field"><label for="novaMatricula">Matrícula (aluno)</label><input id="novaMatricula" name="matricula"></div>
+            <div class="field" id="novaDeficienciaField"><label for="novaDeficiencia">Deficiência do aluno</label><select id="novaDeficiencia" name="categoria_deficiencia"><option value="">Selecione</option><option value="CEGO">Cego</option><option value="SURDO">Surdo</option><option value="AUTISMO">Autismo</option><option value="INTELECTUAL">Intelectual</option></select></div>
+            <div class="field"><label for="novoCurso">Curso</label><input id="novoCurso" name="curso"></div>
+            <div class="field"><label for="novoPeriodo">Período</label><input id="novoPeriodo" name="periodo"></div>
+            <div class="field"><label for="novoTelefone">Telefone (opcional)</label><input id="novoTelefone" name="telefone" type="tel" autocomplete="off"></div>
+            <div class="field full"><button type="submit">Criar usuário</button><p class="message" id="usuarioMensagem" role="status" aria-live="polite"></p></div>
+          </div>
+        </form>
+      </section>
+      <section class="panel">
+        <h2>Usuários cadastrados</h2>
+        <p class="muted">Se um cadastro legado ainda mostrar a categoria Física, edite o aluno e selecione Cego ou Surdo conforme o cadastro correto. Não há conversão automática porque a categoria antiga não diferencia essas opções.</p>
+        <div id="usuariosResultado" class="table-wrap">Carregando usuários...</div>
+      </section>
+      <section class="panel">
+        <h2>Editar usuário selecionado</h2>
+        <form id="editarUsuarioForm">
+          <input id="editarUsuarioId" type="hidden">
+          <div class="form-grid">
+            <div class="field"><label for="editarNome">Nome</label><input id="editarNome" required></div>
+            <div class="field"><label for="editarEmail">E-mail</label><input id="editarEmail" type="email" required></div>
+            <div class="field"><label for="editarPapel">Perfil</label><select id="editarPapel" required><option>ALUNO</option><option>ASSISTENTE</option><option>PROFESSOR</option><option>COORDENADOR</option></select></div>
+            <div class="field"><label for="editarMatricula">Matrícula</label><input id="editarMatricula"></div>
+            <div class="field" id="editarDeficienciaField"><label for="editarDeficiencia">Deficiência do aluno</label><select id="editarDeficiencia"><option value="">Selecione</option><option value="CEGO">Cego</option><option value="SURDO">Surdo</option><option value="AUTISMO">Autismo</option><option value="INTELECTUAL">Intelectual</option></select></div>
+            <div class="field"><label for="editarCurso">Curso</label><input id="editarCurso"></div>
+            <div class="field"><label for="editarPeriodo">Período</label><input id="editarPeriodo"></div>
+            <div class="field"><label for="editarTelefone">Telefone (opcional)</label><input id="editarTelefone" type="tel" autocomplete="off"></div>
+            <div class="field"><label for="editarSenha">Nova senha (opcional, 12+ caracteres)</label><input id="editarSenha" type="password" minlength="12" autocomplete="new-password"></div>
+            <div class="field full"><button type="submit">Salvar alterações</button><p class="message" role="status"></p></div>
+          </div>
+        </form>
+      </section>
+      <section class="panel">
+        <h2>Trilha de auditoria</h2>
+        <p class="muted">A trilha não contém credenciais, tokens ou conteúdo de atendimento.</p>
+        <div id="auditoriaResultado" class="table-wrap">Carregando eventos...</div>
+      </section>
+    </main>
+  </div>
+  <script src="../js/telas.js"></script>
+</body>
+</html>

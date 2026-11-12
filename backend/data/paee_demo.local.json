@@ -1,0 +1,518 @@
+{
+  "usuarios": [
+    {
+      "id_usuario": 1,
+      "email": "coordenacao.teste@example.invalid",
+      "senha_hash": "$2b$12$QdoFkSnll5oXSuxj7rT8y..4yPLxoHtNLff334iCIWLeylZQJ.oz.",
+      "id_tipo_usuario": 4,
+      "matricula": null,
+      "nome": "Coordenação de Teste",
+      "curso": null,
+      "periodo": null,
+      "tel_num": null,
+      "nivel_usuario": "COORDENADOR",
+      "ativo": true,
+      "somente_teste": true
+    },
+    {
+      "id_usuario": 2,
+      "email": "assistente.teste@example.invalid",
+      "senha_hash": "$2b$12$kpkXpslWGYECc6n1nma2xepBjyKdLLzin1axG5N.ZhJqjjk5kluvu",
+      "id_tipo_usuario": 3,
+      "matricula": null,
+      "nome": "Assistente de Teste",
+      "curso": null,
+      "periodo": null,
+      "tel_num": null,
+      "nivel_usuario": "ASSISTENTE",
+      "ativo": true,
+      "somente_teste": true
+    },
+    {
+      "id_usuario": 3,
+      "email": "aluno.teste@example.invalid",
+      "senha_hash": "$2b$12$cD72MzBfqo7qFUtkxVfNjO1Kp3haj.nX4GsqB3wOS6y6gfl296vbK",
+      "id_tipo_usuario": 1,
+      "matricula": "TST-0003",
+      "categoria_deficiencia": "CEGO",
+      "nome": "Aluno de Teste",
+      "curso": "Curso Sintético",
+      "periodo": 1,
+      "tel_num": "5550100003",
+      "nivel_usuario": "ALUNO",
+      "ativo": true,
+      "somente_teste": true
+    },
+    {
+      "id_usuario": 4,
+      "email": "alice.autismo@example.invalid",
+      "senha_hash": "",
+      "id_tipo_usuario": 1,
+      "matricula": "DEMO-EST-1001",
+      "categoria_deficiencia": "AUTISMO",
+      "nome": "Alice Demonstração (Autismo)",
+      "curso": "Curso Sintético",
+      "periodo": 2,
+      "tel_num": "5550101001",
+      "nivel_usuario": "ALUNO",
+      "ativo": true,
+      "somente_teste": true
+    },
+    {
+      "id_usuario": 5,
+      "email": "bruno.surdo@example.invalid",
+      "senha_hash": "",
+      "id_tipo_usuario": 1,
+      "matricula": "DEMO-EST-1002",
+      "categoria_deficiencia": "SURDO",
+      "nome": "Bruno Demonstração (Surdo)",
+      "curso": "Curso Sintético",
+      "periodo": 3,
+      "tel_num": "5550101002",
+      "nivel_usuario": "ALUNO",
+      "ativo": true,
+      "somente_teste": true
+    },
+    {
+      "id_usuario": 6,
+      "email": "carla.intelectual@example.invalid",
+      "senha_hash": "",
+      "id_tipo_usuario": 1,
+      "matricula": "DEMO-EST-1003",
+      "categoria_deficiencia": "INTELECTUAL",
+      "nome": "Carla Demonstração (Intelectual)",
+      "curso": "Curso Sintético",
+      "periodo": 4,
+      "tel_num": "5550101003",
+      "nivel_usuario": "ALUNO",
+      "ativo": true,
+      "somente_teste": true
+    }
+  ],
+  "solicitacoes": [
+    {
+      "id_solicitacao": 1,
+      "matricula": "TST-0003",
+      "criado_por": 3,
+      "motivo": "Solicitação demonstrativa de acessibilidade",
+      "categoria_deficiencia": "CEGO",
+      "status": "EM_ANALISE",
+      "criado_em": "2026-01-15T12:00:00+00:00",
+      "atualizado_em": "2026-11-05T20:41:54-03:00"
+    }
+  ],
+  "formularios": [
+    {
+      "id_formulario": 1,
+      "id_solicitacao": 1,
+      "id_assistente_autor": 2,
+      "status": "EM_PREENCHIMENTO",
+      "secoes": {
+        "apoios": {
+          "estrategias": "Conteúdo sintético para demonstrar o formulário."
+        }
+      },
+      "criado_em": "2026-01-15T12:00:00+00:00",
+      "atualizado_em": "2026-01-15T12:00:00+00:00",
+      "assinaturas": [],
+      "anexo": null,
+      "storage_key": null
+    }
+  ],
+  "designacoes": [
+    {
+      "id_designacao": 1,
+      "matricula": "TST-0003",
+      "id_assistente": 2,
+      "data_inicio": "2020-01-01",
+      "data_fim": null,
+      "criado_por": 1,
+      "criado_em": "2026-01-15T12:00:00+00:00"
+    }
+  ],
+  "relatorios": [
+    {
+      "id_relatorio": 1,
+      "id_aluno": "TST-0003",
+      "data_relatorio": "2026-01-15",
+      "materia": "Matemática",
+      "data_inicio": "2026-01-01",
+      "data_fim": "2026-01-15",
+      "descricao": "Relatório sintético para visualização local.",
+      "observacao": "",
+      "titulo": "Relatório PAEE demonstrativo",
+      "tipo": "Acompanhamento",
+      "categoria_deficiencia": "CEGO",
+      "avaliacoes": {
+        "adaptacao_ambiente": {
+          "nota": 4,
+          "comentario": "Exemplo fictício de adaptação do ambiente."
+        },
+        "ferramentas_auxilio": {
+          "nota": 5,
+          "comentario": "Exemplo fictício de ferramentas de auxílio."
+        }
+      },
+      "campos_especificos": {
+        "mobilidade": "Exemplo fictício de adaptação de mobilidade.",
+        "acessibilidade": "Exemplo fictício de recurso de acessibilidade.",
+        "recursos_apoio": "Exemplo fictício de apoio."
+      },
+      "responsavel": "Assistente de Teste",
+      "situacao": "Em andamento",
+      "criado_por": 2,
+      "criado_em": "2026-01-15T12:00:00+00:00"
+    },
+    {
+      "id_relatorio": 2,
+      "id_aluno": "DEMO-EST-1001",
+      "data_relatorio": "2026-02-12",
+      "materia": "Matemática",
+      "data_inicio": "2026-02-01",
+      "data_fim": "2026-02-12",
+      "descricao": "Registro sintético para demonstrar estatísticas.",
+      "observacao": "",
+      "titulo": "Acompanhamento demonstrativo",
+      "tipo": "Acompanhamento",
+      "categoria_deficiencia": "AUTISMO",
+      "avaliacoes": {
+        "socializacao": {
+          "nota": 3,
+          "comentario": "Dado fictício."
+        },
+        "integracao_ambiente": {
+          "nota": 4,
+          "comentario": "Dado fictício."
+        }
+      },
+      "responsavel": "Assistente de Teste",
+      "situacao": "Concluído",
+      "criado_por": 2,
+      "criado_em": "2026-02-12T12:00:00+00:00"
+    },
+    {
+      "id_relatorio": 3,
+      "id_aluno": "DEMO-EST-1002",
+      "data_relatorio": "2026-03-18",
+      "materia": "Português",
+      "data_inicio": "2026-03-01",
+      "data_fim": "2026-03-18",
+      "descricao": "Registro sintético para demonstrar estatísticas.",
+      "observacao": "",
+      "titulo": "Acompanhamento demonstrativo",
+      "tipo": "Acompanhamento",
+      "categoria_deficiencia": "SURDO",
+      "avaliacoes": {
+        "adaptacao_ambiente": {
+          "nota": 3,
+          "comentario": "Dado fictício."
+        },
+        "ferramentas_auxilio": {
+          "nota": 3,
+          "comentario": "Dado fictício."
+        }
+      },
+      "responsavel": "Assistente de Teste",
+      "situacao": "Concluído",
+      "criado_por": 2,
+      "criado_em": "2026-03-18T12:00:00+00:00"
+    },
+    {
+      "id_relatorio": 4,
+      "id_aluno": "DEMO-EST-1003",
+      "data_relatorio": "2026-04-09",
+      "materia": "Ciências",
+      "data_inicio": "2026-04-01",
+      "data_fim": "2026-04-09",
+      "descricao": "Registro sintético para demonstrar estatísticas.",
+      "observacao": "",
+      "titulo": "Acompanhamento demonstrativo",
+      "tipo": "Acompanhamento",
+      "categoria_deficiencia": "INTELECTUAL",
+      "avaliacoes": {
+        "compreensao_conteudo": {
+          "nota": 2,
+          "comentario": "Dado fictício."
+        },
+        "comportamento_sala": {
+          "nota": 3,
+          "comentario": "Dado fictício."
+        }
+      },
+      "responsavel": "Assistente de Teste",
+      "situacao": "Concluído",
+      "criado_por": 2,
+      "criado_em": "2026-04-09T12:00:00+00:00"
+    },
+    {
+      "id_relatorio": 5,
+      "id_aluno": "DEMO-EST-1001",
+      "data_relatorio": "2026-05-14",
+      "materia": "Português",
+      "data_inicio": "2026-05-01",
+      "data_fim": "2026-05-14",
+      "descricao": "Registro sintético para demonstrar estatísticas.",
+      "observacao": "",
+      "titulo": "Acompanhamento demonstrativo",
+      "tipo": "Acompanhamento",
+      "categoria_deficiencia": "AUTISMO",
+      "avaliacoes": {
+        "socializacao": {
+          "nota": 4,
+          "comentario": "Dado fictício."
+        },
+        "integracao_ambiente": {
+          "nota": 4,
+          "comentario": "Dado fictício."
+        }
+      },
+      "responsavel": "Assistente de Teste",
+      "situacao": "Concluído",
+      "criado_por": 2,
+      "criado_em": "2026-05-14T12:00:00+00:00"
+    },
+    {
+      "id_relatorio": 6,
+      "id_aluno": "DEMO-EST-1002",
+      "data_relatorio": "2026-05-21",
+      "materia": "Matemática",
+      "data_inicio": "2026-05-01",
+      "data_fim": "2026-05-21",
+      "descricao": "Registro sintético para demonstrar estatísticas.",
+      "observacao": "",
+      "titulo": "Acompanhamento demonstrativo",
+      "tipo": "Acompanhamento",
+      "categoria_deficiencia": "SURDO",
+      "avaliacoes": {
+        "adaptacao_ambiente": {
+          "nota": 4,
+          "comentario": "Dado fictício."
+        },
+        "ferramentas_auxilio": {
+          "nota": 4,
+          "comentario": "Dado fictício."
+        }
+      },
+      "responsavel": "Assistente de Teste",
+      "situacao": "Concluído",
+      "criado_por": 2,
+      "criado_em": "2026-05-21T12:00:00+00:00"
+    },
+    {
+      "id_relatorio": 7,
+      "id_aluno": "DEMO-EST-1003",
+      "data_relatorio": "2026-06-11",
+      "materia": "Matemática",
+      "data_inicio": "2026-06-01",
+      "data_fim": "2026-06-11",
+      "descricao": "Registro sintético para demonstrar estatísticas.",
+      "observacao": "",
+      "titulo": "Acompanhamento demonstrativo",
+      "tipo": "Acompanhamento",
+      "categoria_deficiencia": "INTELECTUAL",
+      "avaliacoes": {
+        "compreensao_conteudo": {
+          "nota": 3,
+          "comentario": "Dado fictício."
+        },
+        "comportamento_sala": {
+          "nota": 3,
+          "comentario": "Dado fictício."
+        }
+      },
+      "responsavel": "Assistente de Teste",
+      "situacao": "Concluído",
+      "criado_por": 2,
+      "criado_em": "2026-06-11T12:00:00+00:00"
+    },
+    {
+      "id_relatorio": 8,
+      "id_aluno": "DEMO-EST-1002",
+      "data_relatorio": "2026-07-16",
+      "materia": "Português",
+      "data_inicio": "2026-07-01",
+      "data_fim": "2026-07-16",
+      "descricao": "Registro sintético para demonstrar estatísticas.",
+      "observacao": "",
+      "titulo": "Acompanhamento demonstrativo",
+      "tipo": "Acompanhamento",
+      "categoria_deficiencia": "SURDO",
+      "avaliacoes": {
+        "adaptacao_ambiente": {
+          "nota": 4,
+          "comentario": "Dado fictício."
+        },
+        "ferramentas_auxilio": {
+          "nota": 5,
+          "comentario": "Dado fictício."
+        }
+      },
+      "responsavel": "Assistente de Teste",
+      "situacao": "Concluído",
+      "criado_por": 2,
+      "criado_em": "2026-07-16T12:00:00+00:00"
+    },
+    {
+      "id_relatorio": 9,
+      "id_aluno": "DEMO-EST-1001",
+      "data_relatorio": "2026-08-13",
+      "materia": "Matemática",
+      "data_inicio": "2026-08-01",
+      "data_fim": "2026-08-13",
+      "descricao": "Registro sintético para demonstrar estatísticas.",
+      "observacao": "",
+      "titulo": "Acompanhamento demonstrativo",
+      "tipo": "Acompanhamento",
+      "categoria_deficiencia": "AUTISMO",
+      "avaliacoes": {
+        "socializacao": {
+          "nota": 4,
+          "comentario": "Dado fictício."
+        },
+        "integracao_ambiente": {
+          "nota": 5,
+          "comentario": "Dado fictício."
+        }
+      },
+      "responsavel": "Assistente de Teste",
+      "situacao": "Concluído",
+      "criado_por": 2,
+      "criado_em": "2026-08-13T12:00:00+00:00"
+    },
+    {
+      "id_relatorio": 10,
+      "id_aluno": "DEMO-EST-1003",
+      "data_relatorio": "2026-08-20",
+      "materia": "Português",
+      "data_inicio": "2026-08-01",
+      "data_fim": "2026-08-20",
+      "descricao": "Registro sintético para demonstrar estatísticas.",
+      "observacao": "",
+      "titulo": "Acompanhamento demonstrativo",
+      "tipo": "Acompanhamento",
+      "categoria_deficiencia": "INTELECTUAL",
+      "avaliacoes": {
+        "compreensao_conteudo": {
+          "nota": 4,
+          "comentario": "Dado fictício."
+        },
+        "comportamento_sala": {
+          "nota": 4,
+          "comentario": "Dado fictício."
+        }
+      },
+      "responsavel": "Assistente de Teste",
+      "situacao": "Concluído",
+      "criado_por": 2,
+      "criado_em": "2026-08-20T12:00:00+00:00"
+    },
+    {
+      "id_relatorio": 11,
+      "id_aluno": "DEMO-EST-1001",
+      "data_relatorio": "2026-10-08",
+      "materia": "Ciências",
+      "data_inicio": "2026-10-01",
+      "data_fim": "2026-10-08",
+      "descricao": "Registro sintético para demonstrar estatísticas.",
+      "observacao": "",
+      "titulo": "Acompanhamento demonstrativo",
+      "tipo": "Acompanhamento",
+      "categoria_deficiencia": "AUTISMO",
+      "avaliacoes": {
+        "socializacao": {
+          "nota": 5,
+          "comentario": "Dado fictício."
+        },
+        "integracao_ambiente": {
+          "nota": 4,
+          "comentario": "Dado fictício."
+        }
+      },
+      "responsavel": "Assistente de Teste",
+      "situacao": "Concluído",
+      "criado_por": 2,
+      "criado_em": "2026-10-08T12:00:00+00:00"
+    },
+    {
+      "id_relatorio": 12,
+      "id_aluno": "DEMO-EST-1002",
+      "data_relatorio": "2026-10-22",
+      "materia": "Matemática",
+      "data_inicio": "2026-10-01",
+      "data_fim": "2026-10-22",
+      "descricao": "Registro sintético para demonstrar estatísticas.",
+      "observacao": "",
+      "titulo": "Acompanhamento demonstrativo",
+      "tipo": "Acompanhamento",
+      "categoria_deficiencia": "SURDO",
+      "avaliacoes": {
+        "adaptacao_ambiente": {
+          "nota": 4,
+          "comentario": "Dado fictício."
+        },
+        "ferramentas_auxilio": {
+          "nota": 5,
+          "comentario": "Dado fictício."
+        }
+      },
+      "responsavel": "Assistente de Teste",
+      "situacao": "Concluído",
+      "criado_por": 2,
+      "criado_em": "2026-10-22T12:00:00+00:00"
+    },
+    {
+      "id_relatorio": 13,
+      "id_aluno": "DEMO-EST-1003",
+      "data_relatorio": "2026-10-29",
+      "materia": "Ciências",
+      "data_inicio": "2026-10-01",
+      "data_fim": "2026-10-29",
+      "descricao": "Registro sintético para demonstrar estatísticas.",
+      "observacao": "",
+      "titulo": "Acompanhamento demonstrativo",
+      "tipo": "Acompanhamento",
+      "categoria_deficiencia": "INTELECTUAL",
+      "avaliacoes": {
+        "compreensao_conteudo": {
+          "nota": 3,
+          "comentario": "Dado fictício."
+        },
+        "comportamento_sala": {
+          "nota": 4,
+          "comentario": "Dado fictício."
+        }
+      },
+      "responsavel": "Assistente de Teste",
+      "situacao": "Concluído",
+      "criado_por": 2,
+      "criado_em": "2026-10-29T12:00:00+00:00"
+    }
+  ],
+  "feedbacks": [],
+  "assinaturas": [],
+  "auditoria": [
+    {
+      "ator_id_usuario": 1,
+      "ator_papel": "COORDENADOR",
+      "acao": "STATUS_ALTERADO",
+      "entidade": "solicitacao",
+      "alvo_id": 1,
+      "ocorrido_em": "2026-11-05T20:41:54-03:00",
+      "id_auditoria": 1
+    }
+  ],
+  "anexos": [],
+  "counters": {
+    "usuarios": 6,
+    "solicitacoes": 1,
+    "formularios": 1,
+    "designacoes": 1,
+    "relatorios": 13,
+    "feedbacks": 0,
+    "assinaturas": 0,
+    "auditoria": 1,
+    "anexos": 0
+  },
+  "_somente_teste_local": true,
+  "_aviso": "Modelo com dados totalmente sintéticos; copie para paee_demo.local.json antes de iniciar. Nunca conectar à base institucional."
+}

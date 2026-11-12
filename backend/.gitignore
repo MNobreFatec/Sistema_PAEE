@@ -4,3 +4,6 @@ paee_database.sql
 .venv/
 __pycache__/
 .vscode/
+data/paee.json
+data/paee_demo.local.json
+private_uploads/

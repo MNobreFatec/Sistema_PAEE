@@ -13,7 +13,7 @@
   <div class="layout">
    <aside class="sidebar">
     <div class="brand">
-     <img alt="Logo Fatec" src="../img/logo_fate.png">
+     <span class="brand-mark" aria-hidden="true">PAEE</span>
      <div>
       <strong>
        Sistema PAEE
@@ -81,7 +81,7 @@
      <div class="date" id="date">
      </div>
     </div>
-    <section class="cards">
+    <section class="cards" data-role-only="COORDENADOR">
      <div class="metric">
       <div>
        <small>
@@ -136,7 +136,7 @@
      </div>
     </section>
     <div class="cols">
-     <section class="panel">
+     <section class="panel" data-role-only="ALUNO,COORDENADOR">
       <h3>
        Atividades recentes
       </h3>
@@ -173,11 +173,20 @@
          &rarr;
         </span>
        </a>
-       <a href="feedback.html">
+       <a href="feedback.html" data-role-hide="COORDENADOR">
         <span>
          &star;
         </span>
         Enviar feedback
+        <span>
+         &rarr;
+        </span>
+       </a>
+       <a href="feedback.html" data-role-only="COORDENADOR">
+        <span>
+         &star;
+        </span>
+        Consultar feedbacks
         <span>
          &rarr;
         </span>
