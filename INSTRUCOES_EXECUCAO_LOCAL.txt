@@ -4,3 +4,10 @@ Na raiz do projeto, execute:
 
 python -m pip install -r requirements.txt
 python -m uvicorn backend.routes:app --reload
+
+LocalTestOnly-Placeholder-2026!
+
+Perfil	E-mail
+Aluno	aluno.teste@example.invalid
+Assistente	assistente.teste@example.invalid
+Coordenador	coordenacao.teste@example.invalid
